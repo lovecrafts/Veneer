@@ -1,0 +1,16 @@
+PODS:
+  - Veneer (0.1.0)
+
+DEPENDENCIES:
+  - Veneer (from `../`)
+
+EXTERNAL SOURCES:
+  Veneer:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Veneer: 87163076590cabe22b2a5c42483c7dd6f1bac9a0
+
+PODFILE CHECKSUM: cb4499dadf10f5a3815dc3bcdb1e8d643fbb5b97
+
+COCOAPODS: 1.1.1

@@ -1,0 +1,6 @@
+framework module Veneer {
+  umbrella header "Veneer-umbrella.h"
+
+  export *
+  module * { export * }
+}
