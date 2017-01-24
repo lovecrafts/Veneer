@@ -15,8 +15,9 @@ class GridCollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         guard let collectionView = collectionView else { return }
         
+        let horizontallyCompacy = collectionView.traitCollection.horizontalSizeClass == .compact
         let padding: CGFloat = 10
-        let columns: CGFloat = 3
+        let columns: CGFloat =  horizontallyCompacy ? 2 : 3
         let itemWidth = (collectionView.bounds.width - (padding * (columns + 1))) / columns
         
         let itemHeight = itemWidth
