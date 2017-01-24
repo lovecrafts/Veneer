@@ -8,6 +8,38 @@
 
 import UIKit
 
+class GridCollectionViewCell: UICollectionViewCell {
+    
+    static let gridReuseIdentifier: String = "gridCollectionViewCellReuseIdentifier"
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    let label: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .darkText
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private func commonInit() {
+        self.contentView.addSubview(label)
+        
+        label.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10).isActive = true
+        label.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
+        label.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10).isActive = true
+        label.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10).isActive = true
+    }
+}
+
 class GridCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
@@ -36,7 +68,7 @@ class ViewController: UIViewController {
     let collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: GridCollectionViewFlowLayout())
         
-        collectionView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cell")
+        collectionView.register(GridCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: GridCollectionViewCell.gridReuseIdentifier)
         
         return collectionView
     }()
@@ -73,9 +105,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridCollectionViewCell.gridReuseIdentifier, for: indexPath) as! GridCollectionViewCell
         
         cell.backgroundColor = cellColors[indexPath.item]
+        cell.label.text = "Tap to highlight"
         
         return cell
     }
