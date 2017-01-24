@@ -12,7 +12,7 @@
 		32E4D1C3127F14E6A1001E4727E424C4 /* Pods-Veneer_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9DAFFF40E7670E582AC1567C514539C /* Pods-Veneer_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		375D9E5D2CB8B62E11652F08C5395E18 /* Pods-Veneer_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C9DB15AB9F28581927B70DBC30831B /* Pods-Veneer_Example-dummy.m */; };
 		48967148ED3B743738AC2158B6272FC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		4FBF174B3022F2CACDEFF53120C93E37 /* UIViewController+WindowStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB657825AC06A7A3F53E73F1CC692B7 /* UIViewController+WindowStorage.swift */; };
+		4FBF174B3022F2CACDEFF53120C93E37 /* UIApplication+WindowStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB657825AC06A7A3F53E73F1CC692B7 /* UIApplication+WindowStorage.swift */; };
 		7937B5A21806DB2C56F7AFBE7E55B3EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		86345177C5362A369EFE6F646672706C /* Pods-Veneer_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AD57751A2B489C7C63F2F4D86E905 /* Pods-Veneer_Tests-dummy.m */; };
 		B23DF839F292C10CBED320AF8185DEE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
@@ -62,7 +62,7 @@
 		B32336A8F8F7E97486741EACD7AB6873 /* Pods-Veneer_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Veneer_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C9DAFFF40E7670E582AC1567C514539C /* Pods-Veneer_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Veneer_Example-umbrella.h"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DAB657825AC06A7A3F53E73F1CC692B7 /* UIViewController+WindowStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+WindowStorage.swift"; sourceTree = "<group>"; };
+		DAB657825AC06A7A3F53E73F1CC692B7 /* UIApplication+WindowStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIApplication+WindowStorage.swift"; sourceTree = "<group>"; };
 		E238D04C36BDC0EB414B4DECC8103FFA /* Pods-Veneer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Veneer_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E743564C0DBF3BBD80488948B9C44C3E /* Pods-Veneer_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Veneer_Tests-resources.sh"; sourceTree = "<group>"; };
 		EA483385735F6969D22A4F9E14DEE885 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		CACE9CA3AB0E5BEFE3BF42EFA8C319D4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DAB657825AC06A7A3F53E73F1CC692B7 /* UIViewController+WindowStorage.swift */,
+				DAB657825AC06A7A3F53E73F1CC692B7 /* UIApplication+WindowStorage.swift */,
 				22C9AB251E38132E003E164F /* VeneerRootViewController.swift */,
 				22C9AB271E3813BD003E164F /* UIViewController+Veneer.swift */,
 			);
@@ -359,7 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FBF174B3022F2CACDEFF53120C93E37 /* UIViewController+WindowStorage.swift in Sources */,
+				4FBF174B3022F2CACDEFF53120C93E37 /* UIApplication+WindowStorage.swift in Sources */,
 				22C9AB281E3813BD003E164F /* UIViewController+Veneer.swift in Sources */,
 				F82DA13BE06C62AFE8EF05EB6C476894 /* Veneer-dummy.m in Sources */,
 				22C9AB261E38132E003E164F /* VeneerRootViewController.swift in Sources */,

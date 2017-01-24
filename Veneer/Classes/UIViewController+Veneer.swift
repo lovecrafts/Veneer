@@ -10,8 +10,8 @@ import UIKit
 
 public extension UIViewController {
     
-    public func showVeneer() {
-        guard self.veneerWindow == nil else {
+    public func showVeneer(application: UIApplication = .shared) {
+        guard application.veneerWindow == nil else {
             print("Error: unable to show veneer when one has already been shown")
             return
         }
@@ -25,6 +25,20 @@ public extension UIViewController {
         window.makeKeyAndVisible()
         
         //store window to prevent it being removed on deinit
-        self.veneerWindow = window
+        application.veneerWindow = window
+    }
+    
+    public func dismissVeneer(application: UIApplication = .shared) {
+        guard let window = application.veneerWindow else {
+            print("Warning: attempting to dismiss non visible veneer")
+            return
+        }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            window.alpha = 0.0
+        }) { _ in
+            window.resignKey()
+            application.veneerWindow = nil
+        }
     }
 }

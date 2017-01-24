@@ -11,7 +11,7 @@ import ObjectiveC.runtime
 
 private var veneerWindowAssociatedObjectKey: UInt8 = 42
 
-extension UIViewController {
+extension UIApplication {
     
     var veneerWindow: UIWindow? {
         get {
