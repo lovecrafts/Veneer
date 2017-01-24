@@ -27,3 +27,18 @@ extension UIView {
         self.layer.borderWidth = 1.0
     }
 }
+
+extension UIBarButtonItem {
+    
+    convenience init(customViewWithTitle title: String, target: AnyObject?, action: Selector) {
+        let customView = UIButton(type: .custom)
+        customView.setTitle(title, for: .normal)
+        customView.setTitleColor(.black, for: .normal)
+        customView.titleLabel?.font = UIFont.systemFont(ofSize: UIFont.buttonFontSize)
+        customView.sizeToFit()
+        
+        customView.addTarget(target, action: action, for: .touchUpInside)
+        
+        self.init(customView: customView)
+    }
+}

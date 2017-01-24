@@ -54,6 +54,13 @@ class ViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        //setup bar button item
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customViewWithTitle: "Show Overlay", target: self, action: #selector(ViewController.showOverlayFromBarButtonItem(_:)))
+    }
+    
+    func showOverlayFromBarButtonItem(_ barButtonItem: UIBarButtonItem) {
+        print("show overlay from bar button item: \(barButtonItem)")
     }
 
 }
@@ -70,6 +77,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.backgroundColor = cellColors[indexPath.item]
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("showing overlay highlighting cell at index path: \(indexPath)")
     }
 }
 
