@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     
-    func showVeneer() {
+    public func showVeneer() {
         
     }
 }
