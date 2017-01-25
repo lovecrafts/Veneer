@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22C9AB2F1E383783003E164F /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB2D1E38377E003E164F /* Highlight.swift */; };
 		22D68D4327B4958E50875737A0DEA49B /* VeneerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345A9E6CD080CF17133214721F9978C1 /* VeneerViewController.swift */; };
 		32E4D1C3127F14E6A1001E4727E424C4 /* Pods-Veneer_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9DAFFF40E7670E582AC1567C514539C /* Pods-Veneer_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		375D9E5D2CB8B62E11652F08C5395E18 /* Pods-Veneer_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C9DB15AB9F28581927B70DBC30831B /* Pods-Veneer_Example-dummy.m */; };
@@ -34,7 +35,8 @@
 /* Begin PBXFileReference section */
 		15C9DB15AB9F28581927B70DBC30831B /* Pods-Veneer_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Veneer_Example-dummy.m"; sourceTree = "<group>"; };
 		1AA7EC699C789C537125DBF8091B717B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		297E804C96D985C5942BF5DB7FAFDA64 /* Veneer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Veneer.framework; path = Veneer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22C9AB2D1E38377E003E164F /* Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
+		297E804C96D985C5942BF5DB7FAFDA64 /* Veneer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Veneer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BA4F04934EDA38A8656E31E6EB36009 /* UIViewController+Veneer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Veneer.swift"; sourceTree = "<group>"; };
 		2F986807FAFBCB000695B7B1B7BA262F /* Pods-Veneer_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Veneer_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		33411CB6315E0F928647BE632B6B5187 /* Pods-Veneer_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Veneer_Example-resources.sh"; sourceTree = "<group>"; };
@@ -42,24 +44,24 @@
 		345A9E6CD080CF17133214721F9978C1 /* VeneerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VeneerViewController.swift; sourceTree = "<group>"; };
 		3FCF747413F4FDBD1CEA17722B942E84 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		417AD57751A2B489C7C63F2F4D86E905 /* Pods-Veneer_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Veneer_Tests-dummy.m"; sourceTree = "<group>"; };
-		44E6C9523586D3626159C780A745B4DC /* Pods-Veneer_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Veneer_Example.modulemap"; sourceTree = "<group>"; };
+		44E6C9523586D3626159C780A745B4DC /* Pods-Veneer_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Veneer_Example.modulemap"; sourceTree = "<group>"; };
 		49279563D12AB1EC533AFFB55B65E905 /* UIApplication+WindowStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIApplication+WindowStorage.swift"; sourceTree = "<group>"; };
 		5CD3450EF0C5D74E1B04F34D6C62B74A /* Veneer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Veneer.xcconfig; sourceTree = "<group>"; };
-		622037735BA9EFF6315087F1137DB7F4 /* Pods-Veneer_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Veneer_Tests.modulemap"; sourceTree = "<group>"; };
+		622037735BA9EFF6315087F1137DB7F4 /* Pods-Veneer_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Veneer_Tests.modulemap"; sourceTree = "<group>"; };
 		6A55D05FCE1CB672607DCAF3245CAB85 /* Veneer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Veneer-prefix.pch"; sourceTree = "<group>"; };
 		6FB73DEB18252DD41663F7C559642576 /* Veneer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Veneer-dummy.m"; sourceTree = "<group>"; };
 		80C8A1DC80794F75AE3244F6EF765B57 /* Pods-Veneer_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Veneer_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		825064C80DDEAC773F7ADDF53B8257C7 /* Pods-Veneer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Veneer_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8252DC2BCD81A078682E430DDE975244 /* Pods-Veneer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Veneer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		86FAFB0123ACF5BEBF48E60216F286F2 /* Pods-Veneer_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Veneer_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		896EB433A8F09192CB1D9878D3A8EB59 /* Veneer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Veneer.modulemap; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		896EB433A8F09192CB1D9878D3A8EB59 /* Veneer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Veneer.modulemap; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96C98A1AE05392BC0D74C967026F29A6 /* Pods-Veneer_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Veneer_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		98C825A756A505FB33F3FEAB2570E481 /* Pods-Veneer_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Veneer_Tests-umbrella.h"; sourceTree = "<group>"; };
-		9B06871DA1D3FE3A576CA12A07A78BC5 /* Pods_Veneer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Veneer_Tests.framework; path = "Pods-Veneer_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B06871DA1D3FE3A576CA12A07A78BC5 /* Pods_Veneer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veneer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35B00ED26861E275EFB8D0B3C83939F /* Pods-Veneer_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Veneer_Example-frameworks.sh"; sourceTree = "<group>"; };
 		A6A1ABC0DDD70DA7857E2C8C0FAA8DE9 /* Veneer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Veneer-umbrella.h"; sourceTree = "<group>"; };
-		AE4E465017F8586F0DC38EF8BC601336 /* Pods_Veneer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Veneer_Example.framework; path = "Pods-Veneer_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE4E465017F8586F0DC38EF8BC601336 /* Pods_Veneer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veneer_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B32336A8F8F7E97486741EACD7AB6873 /* Pods-Veneer_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Veneer_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C9DAFFF40E7670E582AC1567C514539C /* Pods-Veneer_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Veneer_Example-umbrella.h"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -170,7 +172,6 @@
 			children = (
 				D0467CA34641322A155FD048784844DA /* Classes */,
 			);
-			name = Veneer;
 			path = Veneer;
 			sourceTree = "<group>";
 		};
@@ -198,8 +199,8 @@
 				49279563D12AB1EC533AFFB55B65E905 /* UIApplication+WindowStorage.swift */,
 				2BA4F04934EDA38A8656E31E6EB36009 /* UIViewController+Veneer.swift */,
 				345A9E6CD080CF17133214721F9978C1 /* VeneerViewController.swift */,
+				22C9AB2D1E38377E003E164F /* Highlight.swift */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -320,6 +321,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					845006AAC758D87F8FA070C998B6E2D2 = {
+						LastSwiftMigration = 0820;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -357,6 +363,7 @@
 				D2FD00A0169B494AF4F15593E5660643 /* UIViewController+Veneer.swift in Sources */,
 				D28954AD0D0A4BC085928B14BD1BB30E /* Veneer-dummy.m in Sources */,
 				22D68D4327B4958E50875737A0DEA49B /* VeneerViewController.swift in Sources */,
+				22C9AB2F1E383783003E164F /* Highlight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +391,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E238D04C36BDC0EB414B4DECC8103FFA /* Pods-Veneer_Example.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -409,6 +417,7 @@
 				PRODUCT_NAME = Pods_Veneer_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -452,6 +461,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8252DC2BCD81A078682E430DDE975244 /* Pods-Veneer_Example.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -478,6 +488,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

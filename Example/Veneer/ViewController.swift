@@ -95,7 +95,7 @@ class ViewController: UIViewController {
     
     func showOverlayFromBarButtonItem(_ barButtonItem: UIBarButtonItem) {
         print("show overlay from bar button item: \(barButtonItem)")
-        self.showVeneer()
+        self.showVeneer(withHighlights: [])
     }
 
 }
@@ -117,7 +117,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("showing overlay highlighting cell at index path: \(indexPath)")
-        self.showVeneer()
+        self.showVeneer(withHighlights: [])
     }
 }
 
