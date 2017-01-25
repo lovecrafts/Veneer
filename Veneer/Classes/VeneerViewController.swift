@@ -11,19 +11,6 @@ import UIKit
 //public view controller use to provide a UIAppearanceContainer for customisation while keeping main root view controller internal
 public class VeneerViewController: UIViewController { }
 
-class HighlightView: UIView {
-    
-    @available(*, unavailable, message: "init(frame:) is unavailable, use init(highlight:) instead")
-    override init(frame: CGRect) { fatalError() }
-    
-    @available(*, unavailable, message: "init?(coder:) is unavailable, use init(highlight:) instead")
-    required init?(coder aDecoder: NSCoder) { fatalError() }
-    
-    init(highlight: Highlight) {
-        super.init(frame: .zero)
-    }
-}
-
 class VeneerRootViewController: VeneerViewController {
     
     override static func initialize() {
