@@ -12,3 +12,13 @@ public enum Highlight {
     
     case view(view: UIView)
 }
+
+extension Highlight {
+    
+    var view: UIView? {
+        switch self {
+        case .view(let view):
+            return view
+        }
+    }
+}

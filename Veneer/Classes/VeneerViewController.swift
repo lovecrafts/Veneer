@@ -40,11 +40,11 @@ class VeneerRootViewController: VeneerViewController {
     @available(*, unavailable, message: "init(nibName:bundle:) is unavailable, use init(highlights:) instead")
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) { fatalError() }
     
-    let highlights: [Highlight]
-    private var highlightViews: [HighlightView] = []
+    let highlightAndViewPairs: [(highlight: Highlight, view: HighlightView)]
     
     required init(highlights: [Highlight]) {
-        self.highlights = highlights
+        let highlightViews = highlights.map { HighlightView(highlight: $0) }
+        highlightAndViewPairs = zip(highlights, highlightViews).map { ($0, $1) }
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -53,10 +53,9 @@ class VeneerRootViewController: VeneerViewController {
         super.viewDidLoad()
         
         //add views for highlights
-        highlightViews = highlights.map { HighlightView(highlight: $0) }
-        highlightViews.forEach { highlightView in
-            self.view.addSubview(highlightView)
-        }
+        highlightAndViewPairs.map { $0.view }.forEach(self.view.addSubview)
+        highlightAndViewPairs.map { $0.highlight }.forEach(observeHighlightPosition)
+        highlightAndViewPairs.forEach(self.syncHighlight)
         
         let dismissTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VeneerRootViewController.dismissCurrentVeneer))
         self.view.addGestureRecognizer(dismissTapGestureRecognizer)
@@ -65,5 +64,27 @@ class VeneerRootViewController: VeneerViewController {
     func dismissCurrentVeneer() {
         self.dismissVeneer()
     }
+    
+    func observeHighlightPosition(highlight: Highlight) {
+        highlight.view?.layer.addObserver(self, forKeyPath: "bounds", options: [], context: nil)
+    }
 
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        guard let observedLayer = object as? CALayer else { return }
+        
+        guard let indexOfMatchingPair = highlightAndViewPairs.index(where: { return $0.highlight.view?.layer == observedLayer }) else { return }
+        
+        let matchingPair = highlightAndViewPairs[indexOfMatchingPair]
+        
+        syncHighlight(matchingPair.highlight, withView: matchingPair.view)
+    }
+    
+    func syncHighlight(_ highlight: Highlight, withView highlightView: HighlightView) {
+        switch highlight {
+        case .view(let view):
+            let convertedFrame = self.view.convert(view.frame, from: view.superview)
+            highlightView.frame = convertedFrame
+        }
+    }
 }
