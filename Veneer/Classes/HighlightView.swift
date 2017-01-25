@@ -54,9 +54,14 @@ public class HighlightView: UIView {
         super.layoutSublayers(of: layer)
         guard layer == self.layer else { return }
         
-        borderLayer.frame = layer.bounds
+        let halfLineWidth = borderLayer.lineWidth / 2
+        let lineBounds = layer.bounds
+            .insetBy(dx: halfLineWidth, dy: halfLineWidth)
+            .offsetBy(dx: -halfLineWidth / 2, dy: -halfLineWidth / 2)
+                
+        borderLayer.frame = lineBounds
         
-        let path = UIBezierPath(rect: layer.bounds)
+        let path = UIBezierPath(rect: lineBounds)
         borderLayer.path = path.cgPath
     }
 }
