@@ -69,7 +69,9 @@ class VeneerRootViewController: VeneerViewController {
         
         guard let observedLayer = object as? CALayer else { return }
         
-        guard let indexOfMatchingPair = highlightAndViewPairs.index(where: { return $0.highlight.view?.layer == observedLayer }) else { return }
+        guard let indexOfMatchingPair = highlightAndViewPairs.index(where: { pair in
+            return pair.highlight.view?.layer == observedLayer
+        }) else { return }
         
         let matchingPair = highlightAndViewPairs[indexOfMatchingPair]
         
@@ -77,14 +79,18 @@ class VeneerRootViewController: VeneerViewController {
     }
     
     func syncHighlight(_ highlight: Highlight, withView highlightView: HighlightView) {
-        switch highlight {
-        case .view(let view):
-            let convertedFrame = self.view.convert(view.frame, from: view.superview)
-            highlightView.frame = convertedFrame
-        case .barButtonItem(let barButtonItem):
-            let customViewFrame = barButtonItem.customView?.frame ?? .zero
-            let convertedFrame = self.view.convert(customViewFrame, from: barButtonItem.customView?.superview)
-            highlightView.frame = convertedFrame
+        guard let viewToHighlight = highlight.view else { return }
+        
+        let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
+        highlightView.frame = convertedFrame
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        //update on layout
+        highlightAndViewPairs.forEach { pair in
+            syncHighlight(pair.highlight, withView: pair.view)
         }
     }
 }
