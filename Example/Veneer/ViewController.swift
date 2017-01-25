@@ -90,12 +90,15 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
         
         //setup bar button item
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customViewWithTitle: "Show Overlay", target: self, action: #selector(ViewController.showOverlayFromBarButtonItem(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customViewWithTitle: "Show Overlay", target: self, action: #selector(ViewController.showOverlayFromBarButtonItem))
     }
     
-    func showOverlayFromBarButtonItem(_ barButtonItem: UIBarButtonItem) {
+    func showOverlayFromBarButtonItem() {
+        guard let barButtonItem = self.navigationItem.rightBarButtonItem else { return }
         print("show overlay from bar button item: \(barButtonItem)")
-        self.showVeneer(withHighlights: [])
+        
+        let highlight = Highlight.barButtonItem(barButtonItem: barButtonItem)
+        self.showVeneer(withHighlights: [highlight])
     }
 
 }

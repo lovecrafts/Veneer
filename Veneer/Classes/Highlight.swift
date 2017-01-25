@@ -11,6 +11,7 @@ import Foundation
 public enum Highlight {
     
     case view(view: UIView)
+    case barButtonItem(barButtonItem: UIBarButtonItem)
 }
 
 extension Highlight {
@@ -19,6 +20,8 @@ extension Highlight {
         switch self {
         case .view(let view):
             return view
+        case .barButtonItem(let barButtonItem):
+            return barButtonItem.customView
         }
     }
 }
