@@ -40,6 +40,14 @@ class VeneerRootViewController: VeneerViewController {
     @available(*, unavailable, message: "init(nibName:bundle:) is unavailable, use init(highlights:) instead")
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) { fatalError() }
     
+    deinit {
+        
+        //remove observer for all highlights
+        highlightAndViewPairs.flatMap { $0.highlight.view }.forEach { view in
+            view.layer.removeObserver(self, forKeyPath: "bounds")
+        }
+    }
+    
     let highlightAndViewPairs: [(highlight: Highlight, view: HighlightView)]
     
     required init(highlights: [Highlight]) {
@@ -54,7 +62,11 @@ class VeneerRootViewController: VeneerViewController {
         
         //add views for highlights
         highlightAndViewPairs.map { $0.view }.forEach(self.view.addSubview)
+        
+        //observe position
         highlightAndViewPairs.map { $0.highlight }.forEach(observeHighlightPosition)
+        
+        //set initial position
         highlightAndViewPairs.forEach(self.syncHighlight)
         
         let dismissTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VeneerRootViewController.dismissCurrentVeneer))
