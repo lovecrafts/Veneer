@@ -36,6 +36,7 @@
 /* Begin PBXFileReference section */
 		15C9DB15AB9F28581927B70DBC30831B /* Pods-Veneer_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Veneer_Example-dummy.m"; sourceTree = "<group>"; };
 		1AA7EC699C789C537125DBF8091B717B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B5959A1E385B4800B87510 /* HighlightViewPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = HighlightViewPlayground.playground; path = Playgrounds/HighlightViewPlayground.playground; sourceTree = "<group>"; };
 		22C9AB2D1E38377E003E164F /* Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
 		22C9AB301E384E26003E164F /* HighlightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
 		297E804C96D985C5942BF5DB7FAFDA64 /* Veneer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Veneer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +109,14 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
+		22B595991E385B2F00B87510 /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				22B5959A1E385B4800B87510 /* HighlightViewPlayground.playground */,
+			);
+			name = Playgrounds;
+			sourceTree = "<group>";
+		};
 		2ED5A954169A1E90B77B9D6AC21DFD81 /* Pods-Veneer_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +181,7 @@
 		88E0803F59350013BB515662E0F7720E /* Veneer */ = {
 			isa = PBXGroup;
 			children = (
+				22B595991E385B2F00B87510 /* Playgrounds */,
 				D0467CA34641322A155FD048784844DA /* Classes */,
 			);
 			path = Veneer;
