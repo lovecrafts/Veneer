@@ -12,7 +12,7 @@ let highlight = Highlight.view(view: UIView(frame: .zero))
 let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 400))
 containerView.backgroundColor = .lightGray
 
-let highlightView = HighlightView(highlight: highlight)
+let highlightView = HighlightView()
 highlightView.frame = CGRect(x: 50, y: 50, width: 300, height: 300)
 
 highlightView.backgroundColor = .white

@@ -35,7 +35,7 @@ class VeneerRootViewController: VeneerViewController {
     let highlightAndViewPairs: [(highlight: Highlight, view: HighlightView)]
     
     required init(highlights: [Highlight]) {
-        let highlightViews = highlights.map { HighlightView(highlight: $0) }
+        let highlightViews = highlights.map { _ in HighlightView() } //1 highlight view per highlight
         highlightAndViewPairs = zip(highlights, highlightViews).map { ($0, $1) }
         
         super.init(nibName: nil, bundle: nil)

@@ -40,7 +40,7 @@ public class HighlightView: UIView {
         return layer
     }()
     
-    init(highlight: Highlight) {
+    init() {
         super.init(frame: .zero)
         
         self.layer.addSublayer(borderLayer)
