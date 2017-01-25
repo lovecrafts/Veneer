@@ -16,9 +16,6 @@ class VeneerRootViewController: VeneerViewController {
     override static func initialize() {
         //set default appearance values, can be overriden (see example app delegate)
         UIView.appearance(whenContainedInInstancesOf: [VeneerViewController.self]).backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        
-        //highlight view
-        HighlightView.appearance(whenContainedInInstancesOf: [VeneerViewController.self]).backgroundColor = .blue
     }
     
     @available(*, unavailable, message: "init(coder:) is unavailable, use init(highlights:) instead")

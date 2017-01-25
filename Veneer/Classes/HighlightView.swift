@@ -8,17 +8,31 @@
 
 import UIKit
 
-class HighlightView: UIView {
+public class HighlightView: UIView {
     
     @available(*, unavailable, message: "init(frame:) is unavailable, use init(highlight:) instead")
     override init(frame: CGRect) { fatalError() }
     
     @available(*, unavailable, message: "init?(coder:) is unavailable, use init(highlight:) instead")
-    required init?(coder aDecoder: NSCoder) { fatalError() }
+    required public init?(coder aDecoder: NSCoder) { fatalError() }
     
-    dynamic var lineDashColor: UIColor = .black
-    dynamic var lineDashPattern: [Int] = [10, 10]
-    dynamic var lineDashWidth: CGFloat = 10
+    public dynamic var lineDashColor: UIColor = .black {
+        didSet {
+            borderLayer.strokeColor = lineDashColor.cgColor
+        }
+    }
+    
+    public dynamic var lineDashPattern: [Int] = [10, 10] {
+        didSet {
+            borderLayer.lineDashPattern = lineDashPattern as [NSNumber]
+        }
+    }
+    
+    public dynamic var lineDashWidth: CGFloat = 10 {
+        didSet {
+            borderLayer.lineWidth = lineDashWidth
+        }
+    }
     
     lazy private(set) var borderLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
@@ -36,7 +50,7 @@ class HighlightView: UIView {
         borderLayer.lineWidth = lineDashWidth
     }
     
-    override func layoutSublayers(of layer: CALayer) {
+    override public func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
         guard layer == self.layer else { return }
         
