@@ -20,7 +20,7 @@ public extension UIViewController {
         
         window.windowLevel = UIWindowLevelStatusBar + 1
         
-        window.rootViewController = VeneerRootViewController()
+        window.rootViewController = VeneerRootViewController(highlights: highlights)
         
         window.makeKeyAndVisible()
         

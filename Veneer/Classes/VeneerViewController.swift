@@ -12,6 +12,20 @@ import UIKit
 public class VeneerViewController: UIViewController { }
 
 class VeneerRootViewController: VeneerViewController {
+    
+    @available(*, unavailable, message: "init(coder:) is unavailable, use init(highlights:) instead")
+    required init?(coder aDecoder: NSCoder) { fatalError() }
+    
+    @available(*, unavailable, message: "init(nibName:bundle:) is unavailable, use init(highlights:) instead")
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) { fatalError() }
+    
+    let highlights: [Highlight]
+    
+    required init(highlights: [Highlight]) {
+        self.highlights = highlights
+        
+        super.init(nibName: nil, bundle: nil)
+    }
 
     override static func initialize() {
         //set default appearance values, can be overriden (see example app delegate)
