@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		22C9AB261E38132E003E164F /* VeneerRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB251E38132E003E164F /* VeneerRootViewController.swift */; };
-		22C9AB281E3813BD003E164F /* UIViewController+Veneer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB271E3813BD003E164F /* UIViewController+Veneer.swift */; };
+		22D68D4327B4958E50875737A0DEA49B /* VeneerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345A9E6CD080CF17133214721F9978C1 /* VeneerViewController.swift */; };
 		32E4D1C3127F14E6A1001E4727E424C4 /* Pods-Veneer_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9DAFFF40E7670E582AC1567C514539C /* Pods-Veneer_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		375D9E5D2CB8B62E11652F08C5395E18 /* Pods-Veneer_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C9DB15AB9F28581927B70DBC30831B /* Pods-Veneer_Example-dummy.m */; };
 		48967148ED3B743738AC2158B6272FC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		4FBF174B3022F2CACDEFF53120C93E37 /* UIApplication+WindowStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB657825AC06A7A3F53E73F1CC692B7 /* UIApplication+WindowStorage.swift */; };
+		5EF1535D0A02D4BD84C4CA3897E877FF /* UIApplication+WindowStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49279563D12AB1EC533AFFB55B65E905 /* UIApplication+WindowStorage.swift */; };
 		7937B5A21806DB2C56F7AFBE7E55B3EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		86345177C5362A369EFE6F646672706C /* Pods-Veneer_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AD57751A2B489C7C63F2F4D86E905 /* Pods-Veneer_Tests-dummy.m */; };
 		B23DF839F292C10CBED320AF8185DEE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		CDEE41535F47D2AE981551B251157D0F /* Pods-Veneer_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C825A756A505FB33F3FEAB2570E481 /* Pods-Veneer_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D28954AD0D0A4BC085928B14BD1BB30E /* Veneer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB73DEB18252DD41663F7C559642576 /* Veneer-dummy.m */; };
+		D2FD00A0169B494AF4F15593E5660643 /* UIViewController+Veneer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA4F04934EDA38A8656E31E6EB36009 /* UIViewController+Veneer.swift */; };
 		F76EE467C2FDFA9957F5842908F6FA68 /* Veneer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A6A1ABC0DDD70DA7857E2C8C0FAA8DE9 /* Veneer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F82DA13BE06C62AFE8EF05EB6C476894 /* Veneer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB73DEB18252DD41663F7C559642576 /* Veneer-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,35 +34,35 @@
 /* Begin PBXFileReference section */
 		15C9DB15AB9F28581927B70DBC30831B /* Pods-Veneer_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Veneer_Example-dummy.m"; sourceTree = "<group>"; };
 		1AA7EC699C789C537125DBF8091B717B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22C9AB251E38132E003E164F /* VeneerRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeneerRootViewController.swift; sourceTree = "<group>"; };
-		22C9AB271E3813BD003E164F /* UIViewController+Veneer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Veneer.swift"; sourceTree = "<group>"; };
-		297E804C96D985C5942BF5DB7FAFDA64 /* Veneer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Veneer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		297E804C96D985C5942BF5DB7FAFDA64 /* Veneer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Veneer.framework; path = Veneer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BA4F04934EDA38A8656E31E6EB36009 /* UIViewController+Veneer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Veneer.swift"; sourceTree = "<group>"; };
 		2F986807FAFBCB000695B7B1B7BA262F /* Pods-Veneer_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Veneer_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		33411CB6315E0F928647BE632B6B5187 /* Pods-Veneer_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Veneer_Example-resources.sh"; sourceTree = "<group>"; };
 		3438F56E36208FD3E819214635562EBE /* Pods-Veneer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Veneer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		345A9E6CD080CF17133214721F9978C1 /* VeneerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VeneerViewController.swift; sourceTree = "<group>"; };
 		3FCF747413F4FDBD1CEA17722B942E84 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		417AD57751A2B489C7C63F2F4D86E905 /* Pods-Veneer_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Veneer_Tests-dummy.m"; sourceTree = "<group>"; };
-		44E6C9523586D3626159C780A745B4DC /* Pods-Veneer_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Veneer_Example.modulemap"; sourceTree = "<group>"; };
+		44E6C9523586D3626159C780A745B4DC /* Pods-Veneer_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Veneer_Example.modulemap"; sourceTree = "<group>"; };
+		49279563D12AB1EC533AFFB55B65E905 /* UIApplication+WindowStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIApplication+WindowStorage.swift"; sourceTree = "<group>"; };
 		5CD3450EF0C5D74E1B04F34D6C62B74A /* Veneer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Veneer.xcconfig; sourceTree = "<group>"; };
-		622037735BA9EFF6315087F1137DB7F4 /* Pods-Veneer_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Veneer_Tests.modulemap"; sourceTree = "<group>"; };
+		622037735BA9EFF6315087F1137DB7F4 /* Pods-Veneer_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Veneer_Tests.modulemap"; sourceTree = "<group>"; };
 		6A55D05FCE1CB672607DCAF3245CAB85 /* Veneer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Veneer-prefix.pch"; sourceTree = "<group>"; };
 		6FB73DEB18252DD41663F7C559642576 /* Veneer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Veneer-dummy.m"; sourceTree = "<group>"; };
 		80C8A1DC80794F75AE3244F6EF765B57 /* Pods-Veneer_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Veneer_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		825064C80DDEAC773F7ADDF53B8257C7 /* Pods-Veneer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Veneer_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8252DC2BCD81A078682E430DDE975244 /* Pods-Veneer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Veneer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		86FAFB0123ACF5BEBF48E60216F286F2 /* Pods-Veneer_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Veneer_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		896EB433A8F09192CB1D9878D3A8EB59 /* Veneer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Veneer.modulemap; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		896EB433A8F09192CB1D9878D3A8EB59 /* Veneer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Veneer.modulemap; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96C98A1AE05392BC0D74C967026F29A6 /* Pods-Veneer_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Veneer_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		98C825A756A505FB33F3FEAB2570E481 /* Pods-Veneer_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Veneer_Tests-umbrella.h"; sourceTree = "<group>"; };
-		9B06871DA1D3FE3A576CA12A07A78BC5 /* Pods_Veneer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veneer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B06871DA1D3FE3A576CA12A07A78BC5 /* Pods_Veneer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Veneer_Tests.framework; path = "Pods-Veneer_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35B00ED26861E275EFB8D0B3C83939F /* Pods-Veneer_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Veneer_Example-frameworks.sh"; sourceTree = "<group>"; };
 		A6A1ABC0DDD70DA7857E2C8C0FAA8DE9 /* Veneer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Veneer-umbrella.h"; sourceTree = "<group>"; };
-		AE4E465017F8586F0DC38EF8BC601336 /* Pods_Veneer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veneer_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE4E465017F8586F0DC38EF8BC601336 /* Pods_Veneer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Veneer_Example.framework; path = "Pods-Veneer_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B32336A8F8F7E97486741EACD7AB6873 /* Pods-Veneer_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Veneer_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C9DAFFF40E7670E582AC1567C514539C /* Pods-Veneer_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Veneer_Example-umbrella.h"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DAB657825AC06A7A3F53E73F1CC692B7 /* UIApplication+WindowStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIApplication+WindowStorage.swift"; sourceTree = "<group>"; };
 		E238D04C36BDC0EB414B4DECC8103FFA /* Pods-Veneer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Veneer_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E743564C0DBF3BBD80488948B9C44C3E /* Pods-Veneer_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Veneer_Tests-resources.sh"; sourceTree = "<group>"; };
 		EA483385735F6969D22A4F9E14DEE885 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -165,11 +165,12 @@
 			path = "Example/Pods/Target Support Files/Veneer";
 			sourceTree = "<group>";
 		};
-		9CDFCA7D0FC0E9E8BF4356400AB7C8A7 /* Veneer */ = {
+		88E0803F59350013BB515662E0F7720E /* Veneer */ = {
 			isa = PBXGroup;
 			children = (
-				CACE9CA3AB0E5BEFE3BF42EFA8C319D4 /* Classes */,
+				D0467CA34641322A155FD048784844DA /* Classes */,
 			);
+			name = Veneer;
 			path = Veneer;
 			sourceTree = "<group>";
 		};
@@ -177,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				824905AFF11E64BF23680AE02AC3F498 /* Support Files */,
-				9CDFCA7D0FC0E9E8BF4356400AB7C8A7 /* Veneer */,
+				88E0803F59350013BB515662E0F7720E /* Veneer */,
 			);
 			name = Veneer;
 			path = ../..;
@@ -191,13 +192,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CACE9CA3AB0E5BEFE3BF42EFA8C319D4 /* Classes */ = {
+		D0467CA34641322A155FD048784844DA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DAB657825AC06A7A3F53E73F1CC692B7 /* UIApplication+WindowStorage.swift */,
-				22C9AB251E38132E003E164F /* VeneerRootViewController.swift */,
-				22C9AB271E3813BD003E164F /* UIViewController+Veneer.swift */,
+				49279563D12AB1EC533AFFB55B65E905 /* UIApplication+WindowStorage.swift */,
+				2BA4F04934EDA38A8656E31E6EB36009 /* UIViewController+Veneer.swift */,
+				345A9E6CD080CF17133214721F9978C1 /* VeneerViewController.swift */,
 			);
+			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -297,7 +299,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3CCC1615F35B6E542128BA423391E61 /* Build configuration list for PBXNativeTarget "Veneer" */;
 			buildPhases = (
-				D3139CED534573AFCB258332B1444EB1 /* Sources */,
+				9895447C0EAC7EB62DEAC1B7C375BD2D /* Sources */,
 				398DE966D49E11E2D5D3653B704B7A13 /* Frameworks */,
 				B226F9121C672E2F1C1C386726A4AC48 /* Headers */,
 			);
@@ -347,22 +349,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9895447C0EAC7EB62DEAC1B7C375BD2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EF1535D0A02D4BD84C4CA3897E877FF /* UIApplication+WindowStorage.swift in Sources */,
+				D2FD00A0169B494AF4F15593E5660643 /* UIViewController+Veneer.swift in Sources */,
+				D28954AD0D0A4BC085928B14BD1BB30E /* Veneer-dummy.m in Sources */,
+				22D68D4327B4958E50875737A0DEA49B /* VeneerViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B14DE6A96B795195E234FDD39C579557 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				375D9E5D2CB8B62E11652F08C5395E18 /* Pods-Veneer_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D3139CED534573AFCB258332B1444EB1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4FBF174B3022F2CACDEFF53120C93E37 /* UIApplication+WindowStorage.swift in Sources */,
-				22C9AB281E3813BD003E164F /* UIViewController+Veneer.swift in Sources */,
-				F82DA13BE06C62AFE8EF05EB6C476894 /* Veneer-dummy.m in Sources */,
-				22C9AB261E38132E003E164F /* VeneerRootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +415,39 @@
 			};
 			name = Release;
 		};
+		18D3ABD099BADC4394518261E4E35224 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CD3450EF0C5D74E1B04F34D6C62B74A /* Veneer.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Veneer/Veneer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Veneer/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Veneer/Veneer.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Veneer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		25BBCA3D92B35DDBE3EF3FDB8FC45C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8252DC2BCD81A078682E430DDE975244 /* Pods-Veneer_Example.debug.xcconfig */;
@@ -448,38 +483,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		3EE15817156E86A50A5167A4A181F7DA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5CD3450EF0C5D74E1B04F34D6C62B74A /* Veneer.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Veneer/Veneer-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Veneer/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Veneer/Veneer.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Veneer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -522,39 +525,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		66797C1BC42A22B1E2F2E465CC88178D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5CD3450EF0C5D74E1B04F34D6C62B74A /* Veneer.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Veneer/Veneer-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Veneer/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Veneer/Veneer.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Veneer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -668,6 +638,38 @@
 			};
 			name = Release;
 		};
+		F0FF60B36C9E0280D43B813BE274E16E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CD3450EF0C5D74E1B04F34D6C62B74A /* Veneer.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Veneer/Veneer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Veneer/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Veneer/Veneer.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Veneer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -701,8 +703,8 @@
 		C3CCC1615F35B6E542128BA423391E61 /* Build configuration list for PBXNativeTarget "Veneer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				66797C1BC42A22B1E2F2E465CC88178D /* Debug */,
-				3EE15817156E86A50A5167A4A181F7DA /* Release */,
+				18D3ABD099BADC4394518261E4E35224 /* Debug */,
+				F0FF60B36C9E0280D43B813BE274E16E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

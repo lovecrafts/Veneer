@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Veneer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        customiseVeneerAppearance()
+        
         return true
+    }
+    
+    private func customiseVeneerAppearance() {
+        //example showing how to customise parts of the veneer appearance 
+        
+        //background view (covers entire screen)
+        UIView.appearance(whenContainedInInstancesOf: [VeneerViewController.self]).backgroundColor = UIColor.red.withAlphaComponent(0.3)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
