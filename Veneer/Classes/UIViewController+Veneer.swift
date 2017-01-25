@@ -28,17 +28,19 @@ public extension UIViewController {
         UIApplication.shared.veneerWindow = window
     }
     
-    public func dismissVeneer() {
+    public func dismissVeneer(animated: Bool = true, completion: (() -> ())? = nil) {
         guard let window = UIApplication.shared.veneerWindow else {
             print("Warning: attempting to dismiss non visible veneer")
             return
         }
         
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
             window.alpha = 0.0
         }) { _ in
-            window.resignKey()
+            //release veneer window to resign as key
             UIApplication.shared.veneerWindow = nil
+
+            completion?()
         }
     }
 }
