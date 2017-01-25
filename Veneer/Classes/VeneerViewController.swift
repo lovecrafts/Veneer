@@ -81,6 +81,9 @@ class VeneerRootViewController: VeneerViewController {
         case .view(let view):
             let convertedFrame = self.view.convert(view.frame, from: view.superview)
             highlightView.frame = convertedFrame
+        case .barButtonItem(let barButtonItem):
+            let convertedFrame = barButtonItem.customView?.frame ?? .zero
+            highlightView.frame = convertedFrame
         }
     }
 }
