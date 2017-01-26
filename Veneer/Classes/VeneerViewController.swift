@@ -87,9 +87,6 @@ class VeneerRootViewController<T: UIView>: VeneerViewController {
         
         //update on layout
         updateHighlightViewFrame()
-        
-        overlayView.layer.borderColor = UIColor.orange.cgColor
-        overlayView.layer.borderWidth = 2
 
         //update overlay view based on highlight position
         updateOverlayView(forTraitCollection: self.traitCollection)
