@@ -32,10 +32,12 @@ class VeneerRootViewController: VeneerViewController {
     
     let highlight: Highlight
     let highlightView: HighlightView
+    let overlayView: UIView
     
     required init(highlight: Highlight) {
         self.highlightView = HighlightView()
         self.highlight = highlight
+        self.overlayView = UIView()
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -43,7 +45,8 @@ class VeneerRootViewController: VeneerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add highlight view
+        //add highlight and overlay views (highlight above)
+        self.view.addSubview(overlayView)
         self.view.addSubview(highlightView)
         
         //observe position
@@ -82,5 +85,24 @@ class VeneerRootViewController: VeneerViewController {
         
         //update on layout
         syncHighlight()
+        
+        //update overlay view based on highlight position
+        overlayView.layer.borderColor = UIColor.orange.cgColor
+        overlayView.layer.borderWidth = 2
+        
+        switch self.traitCollection.horizontalSizeClass {
+        case .compact:
+            overlayView.frame = self.view.bounds
+        case .regular:
+            //check if highlight view is to left or right of screen
+            if highlightView.frame.midX > self.view.bounds.midX {
+                overlayView.frame = CGRect(x: 0, y: 0, width: highlightView.frame.minX, height: self.view.bounds.height)
+            } else {
+                overlayView.frame = CGRect(x: highlightView.frame.maxX, y: 0, width: self.view.bounds.width - highlightView.frame.maxX, height: self.view.bounds.height)
+            }
+        case.unspecified:
+            overlayView.frame = .zero
+        }
+        
     }
 }
