@@ -53,7 +53,7 @@ class VeneerRootViewController: VeneerViewController {
         observeHighlightPosition(highlight: highlight)
         
         //set initial position
-        syncHighlight()
+        updateHighlightViewFrame()
         
         let dismissTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VeneerRootViewController.dismissCurrentVeneer))
         self.view.addGestureRecognizer(dismissTapGestureRecognizer)
@@ -70,10 +70,10 @@ class VeneerRootViewController: VeneerViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         guard let observedLayer = object as? CALayer else { return }
-        syncHighlight()
+        updateHighlightViewFrame()
     }
     
-    func syncHighlight() {
+    func updateHighlightViewFrame() {
         guard let viewToHighlight = highlight.view else { return }
         
         let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
@@ -84,7 +84,7 @@ class VeneerRootViewController: VeneerViewController {
         super.viewDidLayoutSubviews()
         
         //update on layout
-        syncHighlight()
+        updateHighlightViewFrame()
         
         //update overlay view based on highlight position
         overlayView.layer.borderColor = UIColor.orange.cgColor
