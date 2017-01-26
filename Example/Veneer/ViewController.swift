@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         guard let barButtonItem = self.navigationItem.rightBarButtonItem else { return }
         print("show overlay from bar button item: \(barButtonItem)")
         
-        self.showVeneer(withHighlight: .barButtonItem(barButtonItem: barButtonItem))
+        self.showVeneer(withHighlight: Highlight(viewType: .barButtonItem(barButtonItem: barButtonItem)))
     }
 
 }
@@ -121,7 +121,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         print("showing overlay highlighting cell at index path: \(indexPath)")
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        self.showVeneer(withHighlight: .view(view: cell))
+        self.showVeneer(withHighlight: Highlight(viewType: .view(view: cell)))
     }
 }
 
