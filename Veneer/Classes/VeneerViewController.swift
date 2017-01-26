@@ -11,32 +11,33 @@ import UIKit
 //public view controller use to provide a UIAppearanceContainer for customisation while keeping main root view controller internal
 public class VeneerViewController: UIViewController { }
 
-class VeneerRootViewController: VeneerViewController {
+class VeneerRootViewController<T: UIView>: VeneerViewController {
     
     override static func initialize() {
         //set default appearance values, can be overriden (see example app delegate)
         UIView.appearance(whenContainedInInstancesOf: [VeneerViewController.self]).backgroundColor = UIColor.black.withAlphaComponent(0.3)
     }
     
-    @available(*, unavailable, message: "init(coder:) is unavailable, use init(highlights:) instead")
+    @available(*, unavailable, message: "init(coder:) is unavailable, use init(highlight:) instead")
     required init?(coder aDecoder: NSCoder) { fatalError() }
     
-    @available(*, unavailable, message: "init(nibName:bundle:) is unavailable, use init(highlights:) instead")
+    @available(*, unavailable, message: "init(nibName:bundle:) is unavailable, use init(highlight:) instead")
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) { fatalError() }
     
     deinit {
         
-        //remove observer for all highlights
-        highlightAndViewPairs.flatMap { $0.highlight.view }.forEach { view in
-            view.layer.removeObserver(self, forKeyPath: "bounds")
-        }
+        //remove observer for highlight view
+        highlight.view?.layer.removeObserver(self, forKeyPath: "bounds")
     }
     
-    let highlightAndViewPairs: [(highlight: Highlight, view: HighlightView)]
+    let highlight: Highlight
+    let highlightView: HighlightView
+    let overlayView: T
     
-    required init(highlights: [Highlight]) {
-        let highlightViews = highlights.map { _ in HighlightView() } //1 highlight view per highlight
-        highlightAndViewPairs = zip(highlights, highlightViews).map { ($0, $1) }
+    required init(highlight: Highlight, overlayView: T) {
+        self.highlightView = HighlightView()
+        self.highlight = highlight
+        self.overlayView = overlayView
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,14 +45,15 @@ class VeneerRootViewController: VeneerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add views for highlights
-        highlightAndViewPairs.map { $0.view }.forEach(self.view.addSubview)
+        //add highlight and overlay views (highlight above)
+        self.view.addSubview(overlayView)
+        self.view.addSubview(highlightView)
         
         //observe position
-        highlightAndViewPairs.map { $0.highlight }.forEach(observeHighlightPosition)
+        observeHighlightPosition(highlight: highlight)
         
         //set initial position
-        highlightAndViewPairs.forEach(self.syncHighlight)
+        updateHighlightViewFrame()
         
         let dismissTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VeneerRootViewController.dismissCurrentVeneer))
         self.view.addGestureRecognizer(dismissTapGestureRecognizer)
@@ -68,29 +70,47 @@ class VeneerRootViewController: VeneerViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         guard let observedLayer = object as? CALayer else { return }
-        
-        guard let indexOfMatchingPair = highlightAndViewPairs.index(where: { pair in
-            return pair.highlight.view?.layer == observedLayer
-        }) else { return }
-        
-        let matchingPair = highlightAndViewPairs[indexOfMatchingPair]
-        
-        syncHighlight(matchingPair.highlight, withView: matchingPair.view)
+        updateHighlightViewFrame()
     }
     
-    func syncHighlight(_ highlight: Highlight, withView highlightView: HighlightView) {
+    func updateHighlightViewFrame() {
         guard let viewToHighlight = highlight.view else { return }
         
-        let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
-        highlightView.frame = convertedFrame
+        DispatchQueue.main.async {
+            let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
+            self.highlightView.frame = convertedFrame
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         //update on layout
-        highlightAndViewPairs.forEach { pair in
-            syncHighlight(pair.highlight, withView: pair.view)
+        updateHighlightViewFrame()
+
+        //update overlay view based on highlight position
+        updateOverlayView(forTraitCollection: self.traitCollection)
+    }
+    
+    func updateOverlayView(forTraitCollection traitCollection: UITraitCollection) {
+        
+        switch (self.traitCollection.horizontalSizeClass, self.traitCollection.verticalSizeClass) {
+        case (.compact, .regular):
+            //check if highlight view is to top or bottom of screen
+            if highlightView.frame.midY > self.view.bounds.midY {
+                overlayView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: highlightView.frame.minY)
+            } else {
+                overlayView.frame = CGRect(x: 0, y: highlightView.frame.maxY, width: self.view.bounds.width, height: self.view.bounds.height - highlightView.frame.maxY)
+            }
+        case (.compact, .compact), (.regular, .compact):
+            //check if highlight view is to left or right of screen
+            if highlightView.frame.midX > self.view.bounds.midX {
+                overlayView.frame = CGRect(x: 0, y: 0, width: highlightView.frame.minX, height: self.view.bounds.height)
+            } else {
+                overlayView.frame = CGRect(x: highlightView.frame.maxX, y: 0, width: self.view.bounds.width - highlightView.frame.maxX, height: self.view.bounds.height)
+            }
+        default:
+            overlayView.frame = .zero
         }
     }
 }
