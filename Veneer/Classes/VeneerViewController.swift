@@ -78,7 +78,8 @@ class VeneerRootViewController<T: UIView>: VeneerViewController {
         
         DispatchQueue.main.async {
             let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
-            self.highlightView.frame = convertedFrame
+            let insetFrame = convertedFrame.applying(insets: self.highlight.borderInsets)
+            self.highlightView.frame = insetFrame
         }
     }
     

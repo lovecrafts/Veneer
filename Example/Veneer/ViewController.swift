@@ -97,7 +97,11 @@ class ViewController: UIViewController {
         guard let barButtonItem = self.navigationItem.rightBarButtonItem else { return }
         print("show overlay from bar button item: \(barButtonItem)")
         
-        self.showVeneer(withHighlight: Highlight(viewType: .barButtonItem(barButtonItem: barButtonItem)))
+        let highlight = Highlight(
+            viewType: .barButtonItem(barButtonItem: barButtonItem),
+            borderInsets: UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5)
+        )
+        self.showVeneer(withHighlight: highlight)
     }
 
 }
