@@ -11,7 +11,7 @@ import UIKit
 //public view controller use to provide a UIAppearanceContainer for customisation while keeping main root view controller internal
 public class VeneerViewController: UIViewController { }
 
-class VeneerRootViewController: VeneerViewController {
+class VeneerRootViewController<T: UIView>: VeneerViewController {
     
     override static func initialize() {
         //set default appearance values, can be overriden (see example app delegate)
@@ -32,12 +32,12 @@ class VeneerRootViewController: VeneerViewController {
     
     let highlight: Highlight
     let highlightView: HighlightView
-    let overlayView: UIView
+    let overlayView: T
     
     required init(highlight: Highlight) {
         self.highlightView = HighlightView()
         self.highlight = highlight
-        self.overlayView = UIView()
+        self.overlayView = T()
         
         super.init(nibName: nil, bundle: nil)
     }
