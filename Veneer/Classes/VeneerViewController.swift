@@ -92,7 +92,12 @@ class VeneerRootViewController: VeneerViewController {
         
         switch self.traitCollection.horizontalSizeClass {
         case .compact:
-            overlayView.frame = self.view.bounds
+            //check if highlight view is to top or bottom of screen
+            if highlightView.frame.midY > self.view.bounds.midY {
+                overlayView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: highlightView.frame.minY)
+            } else {
+                overlayView.frame = CGRect(x: 0, y: highlightView.frame.maxY, width: self.view.bounds.width, height: self.view.bounds.height - highlightView.frame.maxY)
+            }
         case .regular:
             //check if highlight view is to left or right of screen
             if highlightView.frame.midX > self.view.bounds.midX {
