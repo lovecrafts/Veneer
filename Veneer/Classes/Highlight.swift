@@ -17,9 +17,11 @@ public struct Highlight {
     }
     
     let viewType: ViewType
+    let borderInsets: UIEdgeInsets
     
-    public init(viewType: ViewType) {
+    public init(viewType: ViewType, borderInsets: UIEdgeInsets = .zero) {
         self.viewType = viewType
+        self.borderInsets = borderInsets
     }
 }
 
