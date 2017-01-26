@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIViewController {
     
-    public func showVeneer(withHighlights highlights: [Highlight]) {
+    public func showVeneer(withHighlight highlight: Highlight) {
         guard UIApplication.shared.veneerWindow == nil else {
             print("Error: unable to show veneer when one has already been shown")
             return
@@ -20,7 +20,7 @@ public extension UIViewController {
         
         window.windowLevel = UIWindowLevelStatusBar + 1
         
-        window.rootViewController = VeneerRootViewController(highlights: highlights)
+        window.rootViewController = VeneerRootViewController(highlight: highlight)
         
         window.makeKeyAndVisible()
         

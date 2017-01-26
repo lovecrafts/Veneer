@@ -18,25 +18,24 @@ class VeneerRootViewController: VeneerViewController {
         UIView.appearance(whenContainedInInstancesOf: [VeneerViewController.self]).backgroundColor = UIColor.black.withAlphaComponent(0.3)
     }
     
-    @available(*, unavailable, message: "init(coder:) is unavailable, use init(highlights:) instead")
+    @available(*, unavailable, message: "init(coder:) is unavailable, use init(highlight:) instead")
     required init?(coder aDecoder: NSCoder) { fatalError() }
     
-    @available(*, unavailable, message: "init(nibName:bundle:) is unavailable, use init(highlights:) instead")
+    @available(*, unavailable, message: "init(nibName:bundle:) is unavailable, use init(highlight:) instead")
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) { fatalError() }
     
     deinit {
         
-        //remove observer for all highlights
-        highlightAndViewPairs.flatMap { $0.highlight.view }.forEach { view in
-            view.layer.removeObserver(self, forKeyPath: "bounds")
-        }
+        //remove observer for highlight view
+        highlight.view?.layer.removeObserver(self, forKeyPath: "bounds")
     }
     
-    let highlightAndViewPairs: [(highlight: Highlight, view: HighlightView)]
+    let highlight: Highlight
+    let highlightView: HighlightView
     
-    required init(highlights: [Highlight]) {
-        let highlightViews = highlights.map { _ in HighlightView() } //1 highlight view per highlight
-        highlightAndViewPairs = zip(highlights, highlightViews).map { ($0, $1) }
+    required init(highlight: Highlight) {
+        self.highlightView = HighlightView()
+        self.highlight = highlight
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,14 +43,14 @@ class VeneerRootViewController: VeneerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add views for highlights
-        highlightAndViewPairs.map { $0.view }.forEach(self.view.addSubview)
+        //add highlight view
+        self.view.addSubview(highlightView)
         
         //observe position
-        highlightAndViewPairs.map { $0.highlight }.forEach(observeHighlightPosition)
+        observeHighlightPosition(highlight: highlight)
         
         //set initial position
-        highlightAndViewPairs.forEach(self.syncHighlight)
+        syncHighlight()
         
         let dismissTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VeneerRootViewController.dismissCurrentVeneer))
         self.view.addGestureRecognizer(dismissTapGestureRecognizer)
@@ -68,17 +67,10 @@ class VeneerRootViewController: VeneerViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         guard let observedLayer = object as? CALayer else { return }
-        
-        guard let indexOfMatchingPair = highlightAndViewPairs.index(where: { pair in
-            return pair.highlight.view?.layer == observedLayer
-        }) else { return }
-        
-        let matchingPair = highlightAndViewPairs[indexOfMatchingPair]
-        
-        syncHighlight(matchingPair.highlight, withView: matchingPair.view)
+        syncHighlight()
     }
     
-    func syncHighlight(_ highlight: Highlight, withView highlightView: HighlightView) {
+    func syncHighlight() {
         guard let viewToHighlight = highlight.view else { return }
         
         let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
@@ -89,8 +81,6 @@ class VeneerRootViewController: VeneerViewController {
         super.viewDidLayoutSubviews()
         
         //update on layout
-        highlightAndViewPairs.forEach { pair in
-            syncHighlight(pair.highlight, withView: pair.view)
-        }
+        syncHighlight()
     }
 }
