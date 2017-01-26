@@ -88,9 +88,14 @@ class VeneerRootViewController: VeneerViewController {
         //update on layout
         updateHighlightViewFrame()
         
-        //update overlay view based on highlight position
         overlayView.layer.borderColor = UIColor.orange.cgColor
         overlayView.layer.borderWidth = 2
+
+        //update overlay view based on highlight position
+        updateOverlayView(forTraitCollection: self.traitCollection)
+    }
+    
+    func updateOverlayView(forTraitCollection traitCollection: UITraitCollection) {
         
         switch (self.traitCollection.horizontalSizeClass, self.traitCollection.verticalSizeClass) {
         case (.compact, .regular):
@@ -110,6 +115,5 @@ class VeneerRootViewController: VeneerViewController {
         default:
             overlayView.frame = .zero
         }
-        
     }
 }
