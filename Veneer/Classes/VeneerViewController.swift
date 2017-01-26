@@ -76,8 +76,10 @@ class VeneerRootViewController: VeneerViewController {
     func updateHighlightViewFrame() {
         guard let viewToHighlight = highlight.view else { return }
         
-        let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
-        highlightView.frame = convertedFrame
+        DispatchQueue.main.async {
+            let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
+            self.highlightView.frame = convertedFrame
+        }
     }
     
     override func viewDidLayoutSubviews() {
