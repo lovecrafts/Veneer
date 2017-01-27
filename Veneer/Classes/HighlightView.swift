@@ -40,8 +40,21 @@ public class HighlightView: UIView {
         return layer
     }()
     
-    init() {
+    init(highlight: Highlight) {
         super.init(frame: .zero)
+        
+        //first set default values from highlight
+        if let highlightLineDashColor = highlight.lineDashColor {
+            self.lineDashColor = highlightLineDashColor
+        }
+        
+        if let highlightLineDashPattern = highlight.lineDashPattern {
+            self.lineDashPattern = highlightLineDashPattern
+        }
+        
+        if let highlightLineDashWidth = highlight.lineDashWidth {
+            self.lineDashWidth = highlightLineDashWidth
+        }
         
         self.layer.addSublayer(borderLayer)
         

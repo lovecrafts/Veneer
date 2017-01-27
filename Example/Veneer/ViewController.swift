@@ -99,7 +99,10 @@ class ViewController: UIViewController {
         
         let highlight = Highlight(
             viewType: .barButtonItem(barButtonItem: barButtonItem),
-            borderInsets: UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5)
+            borderInsets: UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5),
+            lineDashColor: .blue,
+            lineDashPattern: [5, 5],
+            lineDashWidth: 3
         )
         self.showVeneer(withHighlight: highlight)
     }

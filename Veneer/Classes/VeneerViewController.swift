@@ -35,7 +35,7 @@ class VeneerRootViewController<T: UIView>: VeneerViewController {
     let overlayView: T
     
     required init(highlight: Highlight, overlayView: T) {
-        self.highlightView = HighlightView()
+        self.highlightView = HighlightView(highlight: highlight)
         self.highlight = highlight
         self.overlayView = overlayView
         
