@@ -16,38 +16,20 @@ public class HighlightView: UIView {
     @available(*, unavailable, message: "init?(coder:) is unavailable, use init(highlight:) instead")
     required public init?(coder aDecoder: NSCoder) { fatalError() }
     
-    public dynamic var lineDashColor: UIColor = .black {
-        didSet {
-            borderLayer.strokeColor = lineDashColor.cgColor
-        }
-    }
-    
-    public dynamic var lineDashPattern: [Int] = [10, 10] {
-        didSet {
-            borderLayer.lineDashPattern = lineDashPattern as [NSNumber]
-        }
-    }
-    
-    public dynamic var lineDashWidth: CGFloat = 10 {
-        didSet {
-            borderLayer.lineWidth = lineDashWidth
-        }
-    }
-    
     lazy private(set) var borderLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.fillColor = UIColor.clear.cgColor
         return layer
     }()
     
-    init() {
+    init(highlight: Highlight) {
         super.init(frame: .zero)
         
         self.layer.addSublayer(borderLayer)
         
-        borderLayer.strokeColor = lineDashColor.cgColor
-        borderLayer.lineDashPattern = lineDashPattern as [NSNumber]
-        borderLayer.lineWidth = lineDashWidth
+        borderLayer.strokeColor = highlight.lineDashColor.cgColor
+        borderLayer.lineDashPattern = highlight.lineDashPattern as [NSNumber]
+        borderLayer.lineWidth = highlight.lineDashWidth
     }
     
     override public func layoutSublayers(of layer: CALayer) {

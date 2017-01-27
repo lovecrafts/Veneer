@@ -97,7 +97,14 @@ class ViewController: UIViewController {
         guard let barButtonItem = self.navigationItem.rightBarButtonItem else { return }
         print("show overlay from bar button item: \(barButtonItem)")
         
-        self.showVeneer(withHighlight: .barButtonItem(barButtonItem: barButtonItem))
+        let highlight = Highlight(
+            viewType: .barButtonItem(barButtonItem: barButtonItem),
+            borderInsets: UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5),
+            lineDashColor: .blue,
+            lineDashPattern: [5, 5],
+            lineDashWidth: 3
+        )
+        self.showVeneer(withHighlight: highlight)
     }
 
 }
@@ -121,7 +128,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         print("showing overlay highlighting cell at index path: \(indexPath)")
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        self.showVeneer(withHighlight: .view(view: cell))
+        self.showVeneer(withHighlight: Highlight(viewType: .view(view: cell)))
     }
 }
 

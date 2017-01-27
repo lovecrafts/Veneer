@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22A6E9F31E3AC2820040C573 /* CGRect+Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6E9F21E3AC2820040C573 /* CGRect+Insets.swift */; };
 		22C9AB2F1E383783003E164F /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB2D1E38377E003E164F /* Highlight.swift */; };
 		22C9AB321E384E2A003E164F /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB301E384E26003E164F /* HighlightView.swift */; };
 		22D68D4327B4958E50875737A0DEA49B /* VeneerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345A9E6CD080CF17133214721F9978C1 /* VeneerViewController.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		15C9DB15AB9F28581927B70DBC30831B /* Pods-Veneer_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Veneer_Example-dummy.m"; sourceTree = "<group>"; };
 		1AA7EC699C789C537125DBF8091B717B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22A6E9F21E3AC2820040C573 /* CGRect+Insets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Insets.swift"; sourceTree = "<group>"; };
 		22B5959A1E385B4800B87510 /* HighlightViewPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = HighlightViewPlayground.playground; path = Playgrounds/HighlightViewPlayground.playground; sourceTree = "<group>"; };
 		22C9AB2D1E38377E003E164F /* Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
 		22C9AB301E384E26003E164F /* HighlightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				345A9E6CD080CF17133214721F9978C1 /* VeneerViewController.swift */,
 				22C9AB301E384E26003E164F /* HighlightView.swift */,
 				22C9AB2D1E38377E003E164F /* Highlight.swift */,
+				22A6E9F21E3AC2820040C573 /* CGRect+Insets.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				5EF1535D0A02D4BD84C4CA3897E877FF /* UIApplication+WindowStorage.swift in Sources */,
 				D2FD00A0169B494AF4F15593E5660643 /* UIViewController+Veneer.swift in Sources */,
 				D28954AD0D0A4BC085928B14BD1BB30E /* Veneer-dummy.m in Sources */,
+				22A6E9F31E3AC2820040C573 /* CGRect+Insets.swift in Sources */,
 				22C9AB321E384E2A003E164F /* HighlightView.swift in Sources */,
 				22D68D4327B4958E50875737A0DEA49B /* VeneerViewController.swift in Sources */,
 				22C9AB2F1E383783003E164F /* Highlight.swift in Sources */,
