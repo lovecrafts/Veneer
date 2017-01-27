@@ -23,7 +23,14 @@ public struct Highlight {
     let lineDashWidth: CGFloat
     let lineDashPattern: [Int]
     
-    public init(viewType: ViewType, borderInsets: UIEdgeInsets = .zero, lineDashColor: UIColor = .black, lineDashPattern: [Int] = [5, 5], lineDashWidth: CGFloat = 5) {
+    public init(
+        viewType: ViewType,
+        borderInsets: UIEdgeInsets = .zero,
+        lineDashColor: UIColor = .black,
+        lineDashPattern: [Int] = [5, 5],
+        lineDashWidth: CGFloat = 5
+        ) {
+        
         self.viewType = viewType
         self.borderInsets = borderInsets
         self.lineDashColor = lineDashColor
