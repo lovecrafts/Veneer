@@ -19,11 +19,11 @@ public struct Highlight {
     let viewType: ViewType
     let borderInsets: UIEdgeInsets
     
-    let lineDashColor: UIColor?
-    let lineDashWidth: CGFloat?
-    let lineDashPattern: [Int]?
+    let lineDashColor: UIColor
+    let lineDashWidth: CGFloat
+    let lineDashPattern: [Int]
     
-    public init(viewType: ViewType, borderInsets: UIEdgeInsets = .zero, lineDashColor: UIColor? = nil, lineDashPattern: [Int]? = nil, lineDashWidth: CGFloat? = nil) {
+    public init(viewType: ViewType, borderInsets: UIEdgeInsets = .zero, lineDashColor: UIColor = .black, lineDashPattern: [Int] = [5, 5], lineDashWidth: CGFloat = 5) {
         self.viewType = viewType
         self.borderInsets = borderInsets
         self.lineDashColor = lineDashColor

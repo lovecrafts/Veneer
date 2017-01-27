@@ -27,9 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //background view (covers entire screen)
         UIView.appearance(whenContainedInInstancesOf: [VeneerViewController.self]).backgroundColor = UIColor.red.withAlphaComponent(0.3)
-        
-        //higlight dash view
-        HighlightView.appearance().lineDashColor = .white
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
