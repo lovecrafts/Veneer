@@ -9,6 +9,15 @@
 import UIKit
 import Veneer
 
+class OverlayView: UIView {
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.backgroundColor = .random
+    }
+}
+
 class GridCollectionViewCell: UICollectionViewCell {
     
     static let gridReuseIdentifier: String = "gridCollectionViewCellReuseIdentifier"
@@ -104,7 +113,8 @@ class ViewController: UIViewController {
             lineDashPattern: [5, 5],
             lineDashWidth: 3
         )
-        self.showVeneer(withHighlight: highlight)
+
+        self.showVeneer(withHighlight: highlight, overlayViewType: OverlayView.self)
     }
 
 }
@@ -128,7 +138,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         print("showing overlay highlighting cell at index path: \(indexPath)")
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        self.showVeneer(withHighlight: Highlight(viewType: .view(view: cell)))
+        self.showVeneer(withHighlight: Highlight(viewType: .view(view: cell)), overlayViewType: OverlayView.self)
     }
 }
 

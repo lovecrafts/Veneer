@@ -103,7 +103,7 @@ class VeneerRootViewController<T: UIView>: VeneerViewController {
             } else {
                 overlayView.frame = CGRect(x: 0, y: highlightView.frame.maxY, width: self.view.bounds.width, height: self.view.bounds.height - highlightView.frame.maxY)
             }
-        case (.compact, .compact), (.regular, .compact):
+        case (.compact, .compact), (.regular, .compact), (.regular, .regular):
             //check if highlight view is to left or right of screen
             if highlightView.frame.midX > self.view.bounds.midX {
                 overlayView.frame = CGRect(x: 0, y: 0, width: highlightView.frame.minX, height: self.view.bounds.height)
