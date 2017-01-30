@@ -32,8 +32,7 @@ class OverlayView: VeneerOverlayView {
         self.addSubview(alpaca)
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override func layoutSubviews(withHighlightViewFrame highlightFrame: CGRect) {
         
         speechBubble.frame.origin = CGPoint(x: self.bounds.width - speechBubble.bounds.width, y: 200)
         

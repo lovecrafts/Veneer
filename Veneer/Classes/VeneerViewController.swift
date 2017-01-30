@@ -92,7 +92,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         //update on layout
@@ -100,6 +100,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
 
         //update overlay view based on highlight position
         updateOverlayView(forTraitCollection: self.traitCollection)
+        
+        //update highlight view position for overlay view
+        self.overlayView.highlightViewFrame = self.highlightView.frame
     }
     
     func updateOverlayView(forTraitCollection traitCollection: UITraitCollection) {

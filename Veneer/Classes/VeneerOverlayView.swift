@@ -19,5 +19,19 @@ open class VeneerOverlayView: UIView {
     public required init() {
         super.init(frame: .zero)
     }
+    
+    var highlightViewFrame: CGRect?
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if let highlightViewFrame = highlightViewFrame {
+            layoutSubviews(withHighlightViewFrame: highlightViewFrame)
+        }
+    }
+    
+    open func layoutSubviews(withHighlightViewFrame highlightFrame: CGRect) {
+        //function to be implemented by subclasses
+    }
 
 }
