@@ -13,9 +13,14 @@ public class VeneerViewController: UIViewController { }
 
 class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     
-    override static func initialize() {
-        //set default appearance values, can be overriden (see example app delegate)
-        UIView.appearance(whenContainedInInstancesOf: [VeneerViewController.self]).backgroundColor = UIColor.black.withAlphaComponent(0.3)
+
+    override class func initialize() {
+
+        //if we are being loaded after the application appearance values have been set, skip this step
+        if VeneerDimmingView.appearance().backgroundColor == nil {
+            //set default appearance values, can be overriden (see example app delegate)
+            VeneerDimmingView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        }
     }
     
     @available(*, unavailable, message: "init(coder:) is unavailable, use init(highlight:) instead")
@@ -40,6 +45,10 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         self.overlayView = overlayView
         
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    override func loadView() {
+        self.view = VeneerDimmingView()
     }
 
     override func viewDidLoad() {
