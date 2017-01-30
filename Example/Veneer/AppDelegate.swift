@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //example showing how to customise parts of the veneer appearance 
         
         //background view (covers entire screen)
-        UIView.appearance(whenContainedInInstancesOf: [VeneerViewController.self]).backgroundColor = UIColor.red.withAlphaComponent(0.3)
+        VeneerDimmingView.appearance().backgroundColor = UIColor.red.withAlphaComponent(0.3)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

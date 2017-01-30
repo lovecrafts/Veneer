@@ -11,11 +11,16 @@ import UIKit
 //public view controller use to provide a UIAppearanceContainer for customisation while keeping main root view controller internal
 public class VeneerViewController: UIViewController { }
 
-class VeneerRootViewController<T: UIView>: VeneerViewController {
+class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     
-    override static func initialize() {
-        //set default appearance values, can be overriden (see example app delegate)
-        UIView.appearance(whenContainedInInstancesOf: [VeneerViewController.self]).backgroundColor = UIColor.black.withAlphaComponent(0.3)
+
+    override class func initialize() {
+
+        //if we are being loaded after the application appearance values have been set, skip this step
+        if VeneerDimmingView.appearance().backgroundColor == nil {
+            //set default appearance values, can be overriden (see example app delegate)
+            VeneerDimmingView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        }
     }
     
     @available(*, unavailable, message: "init(coder:) is unavailable, use init(highlight:) instead")
@@ -40,6 +45,10 @@ class VeneerRootViewController<T: UIView>: VeneerViewController {
         self.overlayView = overlayView
         
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    override func loadView() {
+        self.view = VeneerDimmingView()
     }
 
     override func viewDidLoad() {
@@ -83,7 +92,7 @@ class VeneerRootViewController<T: UIView>: VeneerViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         //update on layout
@@ -91,6 +100,9 @@ class VeneerRootViewController<T: UIView>: VeneerViewController {
 
         //update overlay view based on highlight position
         updateOverlayView(forTraitCollection: self.traitCollection)
+        
+        //update highlight view position for overlay view
+        self.overlayView.highlightViewFrame = self.highlightView.frame
     }
     
     func updateOverlayView(forTraitCollection traitCollection: UITraitCollection) {
@@ -103,7 +115,7 @@ class VeneerRootViewController<T: UIView>: VeneerViewController {
             } else {
                 overlayView.frame = CGRect(x: 0, y: highlightView.frame.maxY, width: self.view.bounds.width, height: self.view.bounds.height - highlightView.frame.maxY)
             }
-        case (.compact, .compact), (.regular, .compact):
+        case (.compact, .compact), (.regular, .compact), (.regular, .regular):
             //check if highlight view is to left or right of screen
             if highlightView.frame.midX > self.view.bounds.midX {
                 overlayView.frame = CGRect(x: 0, y: 0, width: highlightView.frame.minX, height: self.view.bounds.height)

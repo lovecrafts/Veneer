@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIViewController {
     
-    public func showVeneer(withHighlight highlight: Highlight, overlayViewType: UIView.Type = UIView.self) {
+    public func showVeneer(withHighlight highlight: Highlight, overlayViewType: VeneerOverlayView.Type = VeneerOverlayView.self) {
         guard UIApplication.shared.veneerWindow == nil else {
             print("Error: unable to show veneer when one has already been shown")
             return

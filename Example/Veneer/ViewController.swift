@@ -9,6 +9,40 @@
 import UIKit
 import Veneer
 
+class OverlayView: VeneerOverlayView {
+    
+    let speechBubble: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
+        view.backgroundColor = .random
+        view.mark(withColor: .red)
+        return view
+    }()
+    
+    let alpaca: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 400))
+        view.backgroundColor = .random
+        view.mark(withColor: .blue)
+        return view
+    }()
+    
+    required init() {
+        super.init()
+        
+        self.addSubview(speechBubble)
+        self.addSubview(alpaca)
+    }
+    
+    override func layoutSubviews(withHighlightViewFrame highlightFrame: CGRect) {
+        
+        speechBubble.frame.origin = CGPoint(
+            x: self.bounds.width - speechBubble.bounds.width,
+            y: highlightFrame.midY - speechBubble.bounds.height / 2
+        )
+        
+        alpaca.frame.origin = CGPoint(x: 100, y: self.bounds.height - alpaca.bounds.height)
+    }
+}
+
 class GridCollectionViewCell: UICollectionViewCell {
     
     static let gridReuseIdentifier: String = "gridCollectionViewCellReuseIdentifier"
@@ -104,7 +138,8 @@ class ViewController: UIViewController {
             lineDashPattern: [5, 5],
             lineDashWidth: 3
         )
-        self.showVeneer(withHighlight: highlight)
+
+        self.showVeneer(withHighlight: highlight, overlayViewType: OverlayView.self)
     }
 
 }
@@ -128,7 +163,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         print("showing overlay highlighting cell at index path: \(indexPath)")
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        self.showVeneer(withHighlight: Highlight(viewType: .view(view: cell)))
+        self.showVeneer(withHighlight: Highlight(viewType: .view(view: cell)), overlayViewType: OverlayView.self)
     }
 }
 
