@@ -9,10 +9,10 @@
 import UIKit
 import Veneer
 
-class OverlayView: UIView {
+class OverlayView: VeneerOverlayView {
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    required init() {
+        super.init()
         
         self.backgroundColor = .random
     }

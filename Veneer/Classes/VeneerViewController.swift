@@ -11,7 +11,7 @@ import UIKit
 //public view controller use to provide a UIAppearanceContainer for customisation while keeping main root view controller internal
 public class VeneerViewController: UIViewController { }
 
-class VeneerRootViewController<T: UIView>: VeneerViewController {
+class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     
     override static func initialize() {
         //set default appearance values, can be overriden (see example app delegate)

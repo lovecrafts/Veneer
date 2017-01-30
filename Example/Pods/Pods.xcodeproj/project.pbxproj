@@ -11,6 +11,7 @@
 		22C9AB2F1E383783003E164F /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB2D1E38377E003E164F /* Highlight.swift */; };
 		22C9AB321E384E2A003E164F /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB301E384E26003E164F /* HighlightView.swift */; };
 		22D68D4327B4958E50875737A0DEA49B /* VeneerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345A9E6CD080CF17133214721F9978C1 /* VeneerViewController.swift */; };
+		22F26B761E3EBEE200BE4122 /* VeneerOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F26B751E3EBEE200BE4122 /* VeneerOverlayView.swift */; };
 		32E4D1C3127F14E6A1001E4727E424C4 /* Pods-Veneer_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9DAFFF40E7670E582AC1567C514539C /* Pods-Veneer_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		375D9E5D2CB8B62E11652F08C5395E18 /* Pods-Veneer_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C9DB15AB9F28581927B70DBC30831B /* Pods-Veneer_Example-dummy.m */; };
 		48967148ED3B743738AC2158B6272FC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
@@ -41,6 +42,7 @@
 		22B5959A1E385B4800B87510 /* HighlightViewPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = HighlightViewPlayground.playground; path = Playgrounds/HighlightViewPlayground.playground; sourceTree = "<group>"; };
 		22C9AB2D1E38377E003E164F /* Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
 		22C9AB301E384E26003E164F /* HighlightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
+		22F26B751E3EBEE200BE4122 /* VeneerOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeneerOverlayView.swift; sourceTree = "<group>"; };
 		297E804C96D985C5942BF5DB7FAFDA64 /* Veneer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Veneer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BA4F04934EDA38A8656E31E6EB36009 /* UIViewController+Veneer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Veneer.swift"; sourceTree = "<group>"; };
 		2F986807FAFBCB000695B7B1B7BA262F /* Pods-Veneer_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Veneer_Example-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				22C9AB301E384E26003E164F /* HighlightView.swift */,
 				22C9AB2D1E38377E003E164F /* Highlight.swift */,
 				22A6E9F21E3AC2820040C573 /* CGRect+Insets.swift */,
+				22F26B751E3EBEE200BE4122 /* VeneerOverlayView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				D2FD00A0169B494AF4F15593E5660643 /* UIViewController+Veneer.swift in Sources */,
 				D28954AD0D0A4BC085928B14BD1BB30E /* Veneer-dummy.m in Sources */,
 				22A6E9F31E3AC2820040C573 /* CGRect+Insets.swift in Sources */,
+				22F26B761E3EBEE200BE4122 /* VeneerOverlayView.swift in Sources */,
 				22C9AB321E384E2A003E164F /* HighlightView.swift in Sources */,
 				22D68D4327B4958E50875737A0DEA49B /* VeneerViewController.swift in Sources */,
 				22C9AB2F1E383783003E164F /* Highlight.swift in Sources */,
