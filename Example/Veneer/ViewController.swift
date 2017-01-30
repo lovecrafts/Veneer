@@ -11,10 +11,33 @@ import Veneer
 
 class OverlayView: VeneerOverlayView {
     
+    let speechBubble: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
+        view.backgroundColor = .random
+        view.mark(withColor: .red)
+        return view
+    }()
+    
+    let alpaca: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 400))
+        view.backgroundColor = .random
+        view.mark(withColor: .blue)
+        return view
+    }()
+    
     required init() {
         super.init()
         
-        self.backgroundColor = .random
+        self.addSubview(speechBubble)
+        self.addSubview(alpaca)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        speechBubble.frame.origin = CGPoint(x: self.bounds.width - speechBubble.bounds.width, y: 200)
+        
+        alpaca.frame.origin = CGPoint(x: 100, y: self.bounds.height - alpaca.bounds.height)
     }
 }
 
