@@ -123,8 +123,10 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        //setup bar button item
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customViewWithTitle: "Show Overlay", target: self, action: #selector(ViewController.showOverlayFromBarButtonItem))
+        //setup bar button items
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customViewWithTitle: "Bar button", target: self, action: #selector(ViewController.showOverlayFromBarButtonItem))
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customViewWithTitle: "Tab bar", target: self, action: #selector(ViewController.showOverlayFromTabBarItem))
     }
     
     func showOverlayFromBarButtonItem() {
@@ -140,6 +142,18 @@ class ViewController: UIViewController {
         )
 
         self.showVeneer(withHighlight: highlight, overlayViewType: OverlayView.self)
+    }
+    
+    func showOverlayFromTabBarItem() {
+        guard let tabBar = self.tabBarController?.tabBar else { return }
+        guard let tabBarItem = self.navigationController?.tabBarItem else { return }
+        
+        let highlight = Highlight(
+            viewType: .tabBarItem(tabBar: tabBar, tabBarItem: tabBarItem),
+            lineDashColor: .red
+        )
+        
+        self.showVeneer(withHighlight: highlight)
     }
 
 }

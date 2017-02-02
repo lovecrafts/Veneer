@@ -14,6 +14,7 @@ public struct Highlight {
         
         case view(view: UIView)
         case barButtonItem(barButtonItem: UIBarButtonItem)
+        case tabBarItem(tabBar: UITabBar, tabBarItem: UITabBarItem)
     }
     
     let viewType: ViewType
@@ -47,6 +48,8 @@ public extension Highlight {
             return view
         case .barButtonItem(let barButtonItem):
             return barButtonItem.customView
+        case .tabBarItem(let tabBar, let tabBarItem):
+            return tabBar.view(forItem: tabBarItem)
         }
     }
 }
