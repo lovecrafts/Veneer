@@ -40,21 +40,6 @@ public struct Highlight {
     }
 }
 
-extension UITabBar {
-    
-    func view(forItem item: UITabBarItem) -> UIView? {
-        let tabBarItems = self.items ?? []
-        
-        let potentialSubviews = self.subviews.flatMap { $0 as? UIControl }
-        
-        guard let itemIndex = tabBarItems.index(of: item) else { return nil }
-        guard itemIndex >= 0, itemIndex < potentialSubviews.count else { return nil }
-        
-        let matchingSubview = potentialSubviews[itemIndex]
-        return matchingSubview
-    }
-}
-
 public extension Highlight {
     
     var view: UIView? {
