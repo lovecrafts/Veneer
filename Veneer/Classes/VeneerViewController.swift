@@ -89,6 +89,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
             let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
             let insetFrame = convertedFrame.applying(insets: self.highlight.borderInsets)
             self.highlightView.frame = insetFrame
+            
+            //update inverse mask in dimming view
+            self.dimmingView.setNeedsLayout()
         }
     }
     
@@ -103,6 +106,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         
         //update highlight view position for overlay view
         self.overlayView.highlightViewFrame = self.highlightView.frame
+        
+        //dim entire view
+        dimmingView.frame = self.view.bounds
     }
     
     func updateOverlayView(forTraitCollection traitCollection: UITraitCollection) {

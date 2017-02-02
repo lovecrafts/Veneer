@@ -55,8 +55,7 @@ public class VeneerDimmingView: UIView {
         path.addRect(self.bounds)
         
         if let inverseMaskView = inverseMaskView {
-            let convertedFrame = self.convert(inverseMaskView.frame, from: inverseMaskView.superview)
-            path.addRect(convertedFrame.applying(insets: maskInsets))
+            path.addRect(inverseMaskView.frame.applying(insets: maskInsets))
         }
         
         return path
