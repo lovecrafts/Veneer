@@ -33,7 +33,7 @@ public class VeneerDimmingView: UIView {
         }
     }
     
-    required public init(inverseMaskView: UIView? = nil, maskInsets: UIEdgeInsets = .zero) {
+    required public init(inverseMaskView: UIView?, maskInsets: UIEdgeInsets = .zero) {
         super.init(frame: .zero)
         
         self.inverseMaskView = inverseMaskView
@@ -46,7 +46,6 @@ public class VeneerDimmingView: UIView {
         super.layoutSubviews()
         
         maskLayer.path = maskPath
-        maskLayer.fillRule = kCAFillRuleEvenOdd
     }
     
     private var maskPath: CGPath {
