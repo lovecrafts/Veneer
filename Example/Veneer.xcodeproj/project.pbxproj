@@ -16,7 +16,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9122E46392AD182F27097E8C /* Pods_Veneer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B0FFE412D71A817572A895 /* Pods_Veneer_Tests.framework */; };
 		C9C3398D1C782B45925C506A /* Pods_Veneer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404DD71F02FE0F44883DEE66 /* Pods_Veneer_Example.framework */; };
 /* End PBXBuildFile section */
@@ -48,7 +47,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Veneer_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Veneer_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		761CBF9832387E95A3069155 /* Veneer.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Veneer.podspec; path = ../Veneer.podspec; sourceTree = "<group>"; };
 		79961EF011B4FDF2030BED62 /* Pods-Veneer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veneer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Veneer_Example/Pods-Veneer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BE36F56BC3EC6C038F553672 /* Pods-Veneer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veneer_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Veneer_Tests/Pods-Veneer_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				22C9AB291E38183F003E164F /* UIApplication+WindowStorageTests.swift */,
 				22C9AB2B1E381DCC003E164F /* UIViewController+VeneerTests.swift */,
@@ -385,7 +382,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C9AB2A1E38183F003E164F /* UIApplication+WindowStorageTests.swift in Sources */,
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				22C9AB2C1E381DCC003E164F /* UIViewController+VeneerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
