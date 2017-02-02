@@ -44,7 +44,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9F-Ho-HuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072.8" y="772.26386806596713"/>
+            <point key="canvasLocation" x="2012" y="772.26386806596713"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yia-Sa-pk2">
@@ -57,11 +57,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="9wO-LJ-KNr" kind="relationship" relationship="viewControllers" id="AO9-gs-Z7L"/>
+                        <segue destination="sRI-t7-ZqV" kind="relationship" relationship="viewControllers" id="fnZ-5S-MZ1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVG-gB-xzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="772.26386806596713"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6k2-A9-ek0">
+            <objects>
+                <viewController id="sRI-t7-ZqV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v2s-eC-EqI"/>
+                        <viewControllerLayoutGuide type="bottom" id="pV5-UE-5af"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lOc-Wx-mqb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="4Cd-Rs-IM6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fPr-hy-rzR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-25" y="1582"/>
         </scene>
     </scenes>
 </document>
