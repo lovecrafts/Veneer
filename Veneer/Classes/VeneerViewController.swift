@@ -44,7 +44,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         self.highlightView = HighlightView(highlight: highlight)
         self.highlight = highlight
         self.overlayView = overlayView
-        self.dimmingView = VeneerDimmingView(inverseMaskView: highlightView, maskInsets: .zero)
+        self.dimmingView = VeneerDimmingView(inverseMaskView: highlightView)
         
         super.init(nibName: nil, bundle: nil)
     }
