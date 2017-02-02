@@ -10,12 +10,15 @@ import UIKit
 
 extension UITabBar {
     
+    //helper function to get a representative view when showing highlight over tab bar item
+    //note this currently returns a much wider view than expected, but getting the actual view
+    //might require some extra subview "examination"
     func view(forItem item: UITabBarItem) -> UIView? {
         let tabBarItems = self.items ?? []
         
         //get a list of potential subviews (sorted horizontally so we can use the tab bar item order)
         let potentialSubviews = self.subviews
-            .flatMap { $0 as? UIControl }
+            .flatMap { $0 as? UIControl } //check for control to ignore background, visual effect etc
             .sorted { lhs, rhs in lhs.frame.minX < rhs.frame.minX }
         
         //look for a valid index using tab bar item
