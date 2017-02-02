@@ -12,6 +12,7 @@
 		22C7EBE11E43169D0027B6F6 /* HighlightViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7EBE01E43169D0027B6F6 /* HighlightViewTests.swift */; };
 		22C7EBE31E431A0A0027B6F6 /* HighlightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7EBE21E431A0A0027B6F6 /* HighlightTests.swift */; };
 		22C7EBE51E431BBD0027B6F6 /* CGRect+InsetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7EBE41E431BBD0027B6F6 /* CGRect+InsetsTests.swift */; };
+		22C7EBE71E431D0D0027B6F6 /* VeneerOverlayViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7EBE61E431D0D0027B6F6 /* VeneerOverlayViewTests.swift */; };
 		22C9AB2A1E38183F003E164F /* UIApplication+WindowStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB291E38183F003E164F /* UIApplication+WindowStorageTests.swift */; };
 		22C9AB2C1E381DCC003E164F /* UIViewController+VeneerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB2B1E381DCC003E164F /* UIViewController+VeneerTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 		22C7EBE01E43169D0027B6F6 /* HighlightViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightViewTests.swift; sourceTree = "<group>"; };
 		22C7EBE21E431A0A0027B6F6 /* HighlightTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightTests.swift; sourceTree = "<group>"; };
 		22C7EBE41E431BBD0027B6F6 /* CGRect+InsetsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+InsetsTests.swift"; sourceTree = "<group>"; };
+		22C7EBE61E431D0D0027B6F6 /* VeneerOverlayViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeneerOverlayViewTests.swift; sourceTree = "<group>"; };
 		22C9AB291E38183F003E164F /* UIApplication+WindowStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+WindowStorageTests.swift"; sourceTree = "<group>"; };
 		22C9AB2B1E381DCC003E164F /* UIViewController+VeneerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+VeneerTests.swift"; sourceTree = "<group>"; };
 		4048AB75DF255CC63763D7CC /* Pods-Veneer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veneer_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Veneer_Example/Pods-Veneer_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				22C7EBE01E43169D0027B6F6 /* HighlightViewTests.swift */,
 				22C7EBE21E431A0A0027B6F6 /* HighlightTests.swift */,
 				22C7EBE41E431BBD0027B6F6 /* CGRect+InsetsTests.swift */,
+				22C7EBE61E431D0D0027B6F6 /* VeneerOverlayViewTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			files = (
 				22C7EBE11E43169D0027B6F6 /* HighlightViewTests.swift in Sources */,
 				22C9AB2A1E38183F003E164F /* UIApplication+WindowStorageTests.swift in Sources */,
+				22C7EBE71E431D0D0027B6F6 /* VeneerOverlayViewTests.swift in Sources */,
 				22C7EBE31E431A0A0027B6F6 /* HighlightTests.swift in Sources */,
 				22C7EBE51E431BBD0027B6F6 /* CGRect+InsetsTests.swift in Sources */,
 				22C9AB2C1E381DCC003E164F /* UIViewController+VeneerTests.swift in Sources */,
