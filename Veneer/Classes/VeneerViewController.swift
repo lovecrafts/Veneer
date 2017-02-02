@@ -38,21 +38,21 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     let highlight: Highlight
     let highlightView: HighlightView
     let overlayView: T
+    let dimmingView: VeneerDimmingView
     
     required init(highlight: Highlight, overlayView: T) {
         self.highlightView = HighlightView(highlight: highlight)
         self.highlight = highlight
         self.overlayView = overlayView
+        self.dimmingView = VeneerDimmingView(inverseMaskView: highlightView)
         
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    override func loadView() {
-        self.view = VeneerDimmingView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(dimmingView)
         
         //add highlight and overlay views (highlight above)
         self.view.addSubview(overlayView)
@@ -89,6 +89,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
             let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
             let insetFrame = convertedFrame.applying(insets: self.highlight.borderInsets)
             self.highlightView.frame = insetFrame
+            
+            //update inverse mask in dimming view
+            self.dimmingView.setNeedsLayout()
         }
     }
     
@@ -103,6 +106,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         
         //update highlight view position for overlay view
         self.overlayView.highlightViewFrame = self.highlightView.frame
+        
+        //dim entire view
+        dimmingView.frame = self.view.bounds
     }
     
     func updateOverlayView(forTraitCollection traitCollection: UITraitCollection) {
