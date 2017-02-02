@@ -21,9 +21,11 @@ extension UITabBar {
             .flatMap { $0 as? UIControl } //check for control to ignore background, visual effect etc
             .sorted { lhs, rhs in lhs.frame.minX < rhs.frame.minX }
         
+        //something strange going on with UIKit layout if the matching subviews don't match the number of tab bar items
+        guard potentialSubviews.count == tabBarItems.count else { return nil }
+        
         //look for a valid index using tab bar item
         guard let itemIndex = tabBarItems.index(of: item) else { return nil }
-        guard itemIndex >= 0, itemIndex < potentialSubviews.count else { return nil }
         
         //fetch from list of subviews
         let matchingSubview = potentialSubviews[itemIndex]

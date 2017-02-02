@@ -51,4 +51,18 @@ class UITabBar_HelpersTests: XCTestCase {
         XCTAssertEqual(indexOfViewInControl, 1)
     }
     
+    func testNilIsReturnedIfThereAreUnexpectedSubviewsInTabBar() {
+        let sut = UITabBar()
+        let barItem = UITabBarItem(tabBarSystemItem: .featured, tag: 99)
+        sut.items = [barItem]
+        
+        //add a few UIControl subviews to mess up index
+        for _ in 0..<10 {
+            sut.addSubview(UIControl(frame: .zero))
+        }
+        
+        let view = sut.view(forItem: barItem)
+        XCTAssertNil(view)
+    }
+    
 }
