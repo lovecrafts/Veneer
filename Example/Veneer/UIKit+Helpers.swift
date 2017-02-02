@@ -34,7 +34,7 @@ extension UIBarButtonItem {
         let customView = UIButton(type: .custom)
         customView.setTitle(title, for: .normal)
         customView.setTitleColor(.black, for: .normal)
-        customView.titleLabel?.font = UIFont.systemFont(ofSize: UIFont.buttonFontSize)
+        customView.titleLabel?.font = UIFont.systemFont(ofSize: UIFont.buttonFontSize - 2)
         customView.sizeToFit()
         
         customView.addTarget(target, action: action, for: .touchUpInside)
