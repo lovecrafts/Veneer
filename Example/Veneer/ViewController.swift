@@ -34,12 +34,25 @@ class OverlayView: VeneerOverlayView {
     
     override func layoutSubviews(withHighlightViewFrame highlightFrame: CGRect) {
         
-        speechBubble.frame.origin = CGPoint(
-            x: self.bounds.width - speechBubble.bounds.width,
-            y: highlightFrame.midY - speechBubble.bounds.height / 2
-        )
-        
-        alpaca.frame.origin = CGPoint(x: 100, y: self.bounds.height - alpaca.bounds.height)
+        //for compact width show only speech bubble in center
+        if self.traitCollection.horizontalSizeClass == .compact {
+            speechBubble.isHidden = false
+            alpaca.isHidden = true
+            
+            speechBubble.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+            
+        } else {
+            speechBubble.isHidden = false
+            alpaca.isHidden = false
+            
+            speechBubble.frame.origin = CGPoint(
+                x: self.bounds.width - speechBubble.bounds.width,
+                y: highlightFrame.midY - speechBubble.bounds.height / 2
+            )
+            
+            alpaca.frame.origin = CGPoint(x: 100, y: self.bounds.height - alpaca.bounds.height)
+        }
+
     }
 }
 
