@@ -9,53 +9,6 @@
 import UIKit
 import Veneer
 
-class OverlayView: VeneerOverlayView {
-    
-    let speechBubble: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
-        view.backgroundColor = .random
-        view.mark(withColor: .red)
-        return view
-    }()
-    
-    let alpaca: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 400))
-        view.backgroundColor = .random
-        view.mark(withColor: .blue)
-        return view
-    }()
-    
-    required init() {
-        super.init()
-        
-        self.addSubview(speechBubble)
-        self.addSubview(alpaca)
-    }
-    
-    override func layoutSubviews(withHighlightViewFrame highlightFrame: CGRect) {
-        
-        //for compact width show only speech bubble in center
-        if self.traitCollection.horizontalSizeClass == .compact {
-            speechBubble.isHidden = false
-            alpaca.isHidden = true
-            
-            speechBubble.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-            
-        } else {
-            speechBubble.isHidden = false
-            alpaca.isHidden = false
-            
-            speechBubble.frame.origin = CGPoint(
-                x: self.bounds.width - speechBubble.bounds.width,
-                y: highlightFrame.midY - speechBubble.bounds.height / 2
-            )
-            
-            alpaca.frame.origin = CGPoint(x: 100, y: self.bounds.height - alpaca.bounds.height)
-        }
-
-    }
-}
-
 class GridCollectionViewCell: UICollectionViewCell {
     
     static let gridReuseIdentifier: String = "gridCollectionViewCellReuseIdentifier"
@@ -154,7 +107,7 @@ class ViewController: UIViewController {
             lineDashWidth: 3
         )
 
-        self.showVeneer(withHighlight: highlight, overlayViewType: OverlayView.self)
+        self.showVeneer(withHighlight: highlight, overlayViewType: BarButtonItemOverlayView.self)
     }
     
     func showOverlayFromTabBarItem() {
@@ -166,7 +119,7 @@ class ViewController: UIViewController {
             lineDashColor: .red
         )
         
-        self.showVeneer(withHighlight: highlight)
+        self.showVeneer(withHighlight: highlight, overlayViewType: TabBarItemOverlayView.self)
     }
 
 }
@@ -190,7 +143,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         print("showing overlay highlighting cell at index path: \(indexPath)")
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        self.showVeneer(withHighlight: Highlight(viewType: .view(view: cell)), overlayViewType: OverlayView.self)
+        self.showVeneer(withHighlight: Highlight(viewType: .view(view: cell)), overlayViewType: ViewOverlayView.self)
     }
 }
 
