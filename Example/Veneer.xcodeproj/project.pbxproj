@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22238DBF1E37353200FAEABB /* UIKit+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22238DBE1E37353200FAEABB /* UIKit+Helpers.swift */; };
 		22238DC11E37379500FAEABB /* Foundation+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22238DC01E37379500FAEABB /* Foundation+Helpers.swift */; };
+		22849B1E1E43FE6C008117A7 /* ExampleVeneerOverlayViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22849B1D1E43FE6C008117A7 /* ExampleVeneerOverlayViews.swift */; };
 		22C7EBE11E43169D0027B6F6 /* HighlightViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7EBE01E43169D0027B6F6 /* HighlightViewTests.swift */; };
 		22C7EBE31E431A0A0027B6F6 /* HighlightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7EBE21E431A0A0027B6F6 /* HighlightTests.swift */; };
 		22C7EBE51E431BBD0027B6F6 /* CGRect+InsetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7EBE41E431BBD0027B6F6 /* CGRect+InsetsTests.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		22238DBE1E37353200FAEABB /* UIKit+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Helpers.swift"; sourceTree = "<group>"; };
 		22238DC01E37379500FAEABB /* Foundation+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Helpers.swift"; sourceTree = "<group>"; };
+		22849B1D1E43FE6C008117A7 /* ExampleVeneerOverlayViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleVeneerOverlayViews.swift; sourceTree = "<group>"; };
 		22C2C5619FD3D57E50471400 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		22C7EBE01E43169D0027B6F6 /* HighlightViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightViewTests.swift; sourceTree = "<group>"; };
 		22C7EBE21E431A0A0027B6F6 /* HighlightTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightTests.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				22238DBE1E37353200FAEABB /* UIKit+Helpers.swift */,
 				22238DC01E37379500FAEABB /* Foundation+Helpers.swift */,
+				22849B1D1E43FE6C008117A7 /* ExampleVeneerOverlayViews.swift */,
 			);
 			name = "Example for Veneer";
 			path = Veneer;
@@ -389,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22238DC11E37379500FAEABB /* Foundation+Helpers.swift in Sources */,
+				22849B1E1E43FE6C008117A7 /* ExampleVeneerOverlayViews.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				22238DBF1E37353200FAEABB /* UIKit+Helpers.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

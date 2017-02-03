@@ -82,7 +82,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         updateHighlightViewFrame()
     }
     
-    func updateHighlightViewFrame() {
+    func updateHighlightViewFrame(completion: @escaping () -> () = { _ in }) {
         guard let viewToHighlight = highlight.view else { return }
         
         DispatchQueue.main.async {
@@ -92,6 +92,8 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
             
             //update inverse mask in dimming view
             self.dimmingView.setNeedsLayout()
+            
+            completion()
         }
     }
     
@@ -99,37 +101,15 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         super.viewDidLayoutSubviews()
         
         //update on layout
-        updateHighlightViewFrame()
-
-        //update overlay view based on highlight position
-        updateOverlayView(forTraitCollection: self.traitCollection)
+        updateHighlightViewFrame {
+            //update highlight view position for overlay view
+            self.overlayView.highlightViewFrame = self.highlightView.frame
+        }
         
-        //update highlight view position for overlay view
-        self.overlayView.highlightViewFrame = self.highlightView.frame
+        //update overlay view to match bounds
+        overlayView.frame = self.view.bounds
         
         //dim entire view
         dimmingView.frame = self.view.bounds
-    }
-    
-    func updateOverlayView(forTraitCollection traitCollection: UITraitCollection) {
-        
-        switch (self.traitCollection.horizontalSizeClass, self.traitCollection.verticalSizeClass) {
-        case (.compact, .regular):
-            //check if highlight view is to top or bottom of screen
-            if highlightView.frame.midY > self.view.bounds.midY {
-                overlayView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: highlightView.frame.minY)
-            } else {
-                overlayView.frame = CGRect(x: 0, y: highlightView.frame.maxY, width: self.view.bounds.width, height: self.view.bounds.height - highlightView.frame.maxY)
-            }
-        case (.compact, .compact), (.regular, .compact), (.regular, .regular):
-            //check if highlight view is to left or right of screen
-            if highlightView.frame.midX > self.view.bounds.midX {
-                overlayView.frame = CGRect(x: 0, y: 0, width: highlightView.frame.minX, height: self.view.bounds.height)
-            } else {
-                overlayView.frame = CGRect(x: highlightView.frame.maxX, y: 0, width: self.view.bounds.width - highlightView.frame.maxX, height: self.view.bounds.height)
-            }
-        default:
-            overlayView.frame = .zero
-        }
     }
 }

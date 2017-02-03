@@ -22,9 +22,9 @@ extension UIColor {
 
 extension UIView {
     
-    func mark(withColor color: UIColor = .random) {
+    func mark(withColor color: UIColor = .random, borderWidth: CGFloat = 2) {
         self.layer.borderColor = color.cgColor
-        self.layer.borderWidth = 1.0
+        self.layer.borderWidth = borderWidth
     }
 }
 
