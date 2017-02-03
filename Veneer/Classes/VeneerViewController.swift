@@ -82,7 +82,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         updateHighlightViewFrame()
     }
     
-    func updateHighlightViewFrame() {
+    func updateHighlightViewFrame(completion: @escaping () -> () = { _ in }) {
         guard let viewToHighlight = highlight.view else { return }
         
         DispatchQueue.main.async {
@@ -92,6 +92,8 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
             
             //update inverse mask in dimming view
             self.dimmingView.setNeedsLayout()
+            
+            completion()
         }
     }
     
@@ -99,13 +101,13 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         super.viewDidLayoutSubviews()
         
         //update on layout
-        updateHighlightViewFrame()
-
+        updateHighlightViewFrame {
+            //update highlight view position for overlay view
+            self.overlayView.highlightViewFrame = self.highlightView.frame
+        }
+        
         //update overlay view to match bounds
         overlayView.frame = self.view.bounds
-        
-        //update highlight view position for overlay view
-        self.overlayView.highlightViewFrame = self.highlightView.frame
         
         //dim entire view
         dimmingView.frame = self.view.bounds

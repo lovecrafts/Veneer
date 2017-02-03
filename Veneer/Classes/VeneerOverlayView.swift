@@ -20,7 +20,11 @@ open class VeneerOverlayView: UIView {
         super.init(frame: .zero)
     }
     
-    var highlightViewFrame: CGRect?
+    var highlightViewFrame: CGRect? {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
     
     open override func layoutSubviews() {
         super.layoutSubviews()

@@ -18,8 +18,8 @@ class BarButtonItemOverlayView: VeneerOverlayView {
         return view
     }()
     
-    let alpaca: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 400))
+    let arrow: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 100))
         view.backgroundColor = .random
         view.mark(withColor: .blue)
         return view
@@ -31,30 +31,14 @@ class BarButtonItemOverlayView: VeneerOverlayView {
         self.mark(withColor: .random)
         
         self.addSubview(speechBubble)
-        self.addSubview(alpaca)
+        self.addSubview(arrow)
     }
     
     override func layoutSubviews(withHighlightViewFrame highlightFrame: CGRect) {
         
-        //for compact width show only speech bubble in center
-        if self.traitCollection.horizontalSizeClass == .compact {
-            speechBubble.isHidden = false
-            alpaca.isHidden = true
-            
-            speechBubble.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-            
-        } else {
-            speechBubble.isHidden = false
-            alpaca.isHidden = false
-            
-            speechBubble.frame.origin = CGPoint(
-                x: self.bounds.width - speechBubble.bounds.width,
-                y: highlightFrame.midY - speechBubble.bounds.height / 2
-            )
-            
-            alpaca.frame.origin = CGPoint(x: 100, y: self.bounds.height - alpaca.bounds.height)
-        }
+        speechBubble.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         
+        arrow.frame.origin = CGPoint(x: highlightFrame.midX - 25, y: highlightFrame.maxY + 20)
     }
 }
 
