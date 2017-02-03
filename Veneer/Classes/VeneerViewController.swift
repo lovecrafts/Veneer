@@ -85,6 +85,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     func updateHighlightViewFrame(completion: @escaping () -> () = { _ in }) {
         guard let viewToHighlight = highlight.view else { return }
         
+        //pushing onto next event loop since components like bar button item don't have their frames updated immediately
         DispatchQueue.main.async {
             let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
             let insetFrame = convertedFrame.applying(insets: self.highlight.borderInsets)
@@ -97,7 +98,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         }
     }
     
-    override func viewWillLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         //update on layout
