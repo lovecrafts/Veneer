@@ -74,18 +74,42 @@ class ViewOverlayView: VeneerOverlayView {
             speechBubble.isHidden = false
             alpaca.isHidden = true
             
-            speechBubble.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+            //calculate largest free space to show view
+            let slices = self.bounds.divided(atDistance: highlightFrame.minY, from: .minYEdge)
+            let top = slices.slice
+            let bottom = slices.remainder.insetBy(dx: 0, dy: highlightFrame.height / 2).offsetBy(dx: 0, dy: highlightFrame.height / 2)
+            
+            if top.height > bottom.height {
+                speechBubble.center = CGPoint(x: self.bounds.midX, y: top.midY)
+            } else {
+                speechBubble.center = CGPoint(x: self.bounds.midX, y: bottom.midY)
+            }
             
         } else {
             speechBubble.isHidden = false
             alpaca.isHidden = false
             
-            speechBubble.frame.origin = CGPoint(
-                x: self.bounds.width - speechBubble.bounds.width,
-                y: highlightFrame.midY - speechBubble.bounds.height / 2
-            )
+            if highlightFrame.midX > self.bounds.midX {
+                speechBubble.frame.origin = CGPoint(
+                    x: highlightFrame.minX - speechBubble.bounds.width,
+                    y: highlightFrame.midY - speechBubble.bounds.height / 2
+                )
+                
+                alpaca.frame.origin = CGPoint(x: 50, y: self.bounds.height - alpaca.bounds.height)
+                
+            } else {
+                speechBubble.frame.origin = CGPoint(
+                    x: highlightFrame.maxX,
+                    y: highlightFrame.midY - speechBubble.bounds.height / 2
+                )
+                
+                alpaca.frame.origin = CGPoint(x: self.bounds.width - 50 - alpaca.bounds.width, y: self.bounds.height - alpaca.bounds.height)
+            }
             
-            alpaca.frame.origin = CGPoint(x: 100, y: self.bounds.height - alpaca.bounds.height)
+            if alpaca.frame.intersects(speechBubble.frame) {
+                alpaca.isHidden = true
+            }
+            
         }
         
     }
