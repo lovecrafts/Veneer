@@ -22,7 +22,14 @@ public extension UIViewController {
         
         window.rootViewController = VeneerRootViewController(highlight: highlight, overlayView: overlayViewType.init())
         
+        window.rootViewController?.view.alpha = 0
+        
         window.makeKeyAndVisible()
+        
+        //fade in window on initial display
+        UIView.animate(withDuration: 0.2) {
+            window.rootViewController?.view.alpha = 1
+        }
         
         //store window to prevent it being removed on deinit
         UIApplication.shared.veneerWindow = window
