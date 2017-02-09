@@ -43,16 +43,16 @@ public struct Highlight {
 
 public extension Highlight {
     
-    var view: UIView? {
+    var views: [UIView] {
         switch self.viewType {
         case .view(let view):
-            return view
+            return [view]
         case .viewUnion(let views):
-            return views.first
+            return views
         case .barButtonItem(let barButtonItem):
-            return barButtonItem.customView
+            return [barButtonItem.customView].flatMap { $0 }
         case .tabBarItem(let tabBar, let tabBarItem):
-            return tabBar.view(forItem: tabBarItem)
+            return [tabBar.view(forItem: tabBarItem)].flatMap { $0 }
         }
     }
 }

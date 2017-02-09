@@ -20,12 +20,20 @@ class HighlightTests: XCTestCase {
         XCTAssertEqual(sut.lineDashWidth, 5)
     }
     
-    func testFetchingViewForViewReturnsTheView() {
+    func testFetchingViewForViewReturnsJustTheView() {
         let view = UIView()
         let sut = Highlight(viewType: .view(view: view))
         
-        XCTAssertNotNil(sut.view)
-        XCTAssertEqual(sut.view, view)
+        XCTAssertEqual(sut.views.count, 1)
+        XCTAssertEqual(sut.views.first, view)
+    }
+    
+    func testFetchingViewsForUnionReturnsAllViews() {
+        let views = [UIView(), UIView()]
+        let sut = Highlight(viewType: .viewUnion(views: views))
+        
+        XCTAssertEqual(sut.views.count, 2)
+        XCTAssertEqual(sut.views, views)
     }
     
     func testFetchingViewForBarButtonItemReturnsCustomView() {
@@ -33,15 +41,15 @@ class HighlightTests: XCTestCase {
         let barButtonItem = UIBarButtonItem(customView: customView)
         let sut = Highlight(viewType: .barButtonItem(barButtonItem: barButtonItem))
         
-        XCTAssertNotNil(sut.view)
-        XCTAssertEqual(sut.view, customView)
+        XCTAssertEqual(sut.views.count, 1)
+        XCTAssertEqual(sut.views.first, customView)
     }
     
-    func testFetchingViewForBarButtonItemReturnsNilWhenThereIsNoCustomView() {
+    func testFetchingViewForBarButtonItemReturnsEmptyWhenThereIsNoCustomView() {
         let barButtonItem = UIBarButtonItem(title: "title", style: .plain, target: nil, action: nil)
         let sut = Highlight(viewType: .barButtonItem(barButtonItem: barButtonItem))
         
-        XCTAssertNil(sut.view)
+        XCTAssertTrue(sut.views.isEmpty)
     }
     
     func testFetchingViewForTabBarItem() {
@@ -51,7 +59,7 @@ class HighlightTests: XCTestCase {
         
         let sut = Highlight(viewType: .tabBarItem(tabBar: tabBar, tabBarItem: barItem))
         
-        XCTAssertNotNil(sut.view)
+        XCTAssertEqual(sut.views.count, 1)
     }
     
 }

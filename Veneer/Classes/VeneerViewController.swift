@@ -32,7 +32,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     deinit {
         
         //remove observer for highlight view
-        highlight.view?.layer.removeObserver(self, forKeyPath: "bounds")
+        highlight.views.forEach { view in
+            view.layer.removeObserver(self, forKeyPath: "bounds")
+        }
     }
     
     let highlight: Highlight
@@ -73,7 +75,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     }
     
     func observeHighlightPosition(highlight: Highlight) {
-        highlight.view?.layer.addObserver(self, forKeyPath: "bounds", options: [], context: nil)
+        highlight.views.forEach { view in
+            view.layer.addObserver(self, forKeyPath: "bounds", options: [], context: nil)
+        }
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -83,13 +87,17 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     }
     
     func updateHighlightViewFrame(completion: @escaping () -> () = { _ in }) {
-        guard let viewToHighlight = highlight.view else { return }
         
         //pushing onto next event loop since components like bar button item don't have their frames updated immediately
         DispatchQueue.main.async {
-            let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
-            let insetFrame = convertedFrame.applying(insets: self.highlight.borderInsets)
-            self.highlightView.frame = insetFrame
+            let viewsToHighlight = self.highlight.views
+            
+            let convertedFrames = viewsToHighlight
+                .map { self.view.convert($0.frame, from: $0.superview) }
+                .map { $0.applying(insets: self.highlight.borderInsets) }
+            
+            let combinedFrame: CGRect = convertedFrames.reduce(.null) { combined, frame in return combined.union(frame) }
+            self.highlightView.frame = combinedFrame
             
             //update inverse mask in dimming view
             self.dimmingView.setNeedsLayout()
