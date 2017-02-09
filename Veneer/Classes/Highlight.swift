@@ -13,6 +13,7 @@ public struct Highlight {
     public enum ViewType {
         
         case view(view: UIView)
+        case viewUnion(views: [UIView])
         case barButtonItem(barButtonItem: UIBarButtonItem)
         case tabBarItem(tabBar: UITabBar, tabBarItem: UITabBarItem)
     }
@@ -46,6 +47,8 @@ public extension Highlight {
         switch self.viewType {
         case .view(let view):
             return view
+        case .viewUnion(let views):
+            return views.first
         case .barButtonItem(let barButtonItem):
             return barButtonItem.customView
         case .tabBarItem(let tabBar, let tabBarItem):
