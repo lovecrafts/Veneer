@@ -97,7 +97,11 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
                 .map { $0.applying(insets: self.highlight.borderInsets) }
             
             zip(viewsToHighlight, self.highlightViews).forEach { view, highlightView in
-                highlightView.frame = self.view.convert(view.frame, from: view.superview)
+                
+                //update each highlight view with correspinging original view (including insets)
+                highlightView.frame = self.view
+                    .convert(view.frame, from: view.superview)
+                    .applying(insets: self.highlight.borderInsets)
             }
             
             //update inverse mask in dimming view
