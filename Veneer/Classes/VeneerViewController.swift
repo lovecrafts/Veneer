@@ -38,15 +38,15 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     }
     
     let highlight: Highlight
-    let highlightView: HighlightView
+    let highlightViews: [HighlightView]
     let overlayView: T
     let dimmingView: VeneerDimmingView
     
     required init(highlight: Highlight, overlayView: T) {
-        self.highlightView = HighlightView(highlight: highlight)
+        self.highlightViews = highlight.views.map { _ in HighlightView(highlight: highlight) }
         self.highlight = highlight
         self.overlayView = overlayView
-        self.dimmingView = VeneerDimmingView(inverseMaskView: highlightView)
+        self.dimmingView = VeneerDimmingView(inverseMaskViews: highlightViews)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -58,7 +58,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         
         //add highlight and overlay views (highlight above)
         self.view.addSubview(overlayView)
-        self.view.addSubview(highlightView)
+        highlightViews.forEach(self.view.addSubview)
         
         //observe position
         observeHighlightPosition(highlight: highlight)
@@ -96,8 +96,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
                 .map { self.view.convert($0.frame, from: $0.superview) }
                 .map { $0.applying(insets: self.highlight.borderInsets) }
             
-            let combinedFrame: CGRect = convertedFrames.reduce(.null) { combined, frame in return combined.union(frame) }
-            self.highlightView.frame = combinedFrame
+            zip(viewsToHighlight, self.highlightViews).forEach { view, highlightView in
+                highlightView.frame = self.view.convert(view.frame, from: view.superview)
+            }
             
             //update inverse mask in dimming view
             self.dimmingView.setNeedsLayout()
@@ -112,7 +113,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         //update on layout
         updateHighlightViewFrame {
             //update highlight view position for overlay view
-            self.overlayView.highlightViewFrame = self.highlightView.frame
+            self.overlayView.highlightViewFrame = self.highlightViews.reduce(CGRect.null) { combined, view in combined.union(view.frame) }
         }
         
         //update overlay view to match bounds

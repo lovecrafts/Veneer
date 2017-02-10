@@ -49,15 +49,13 @@ public class HighlightView: UIView {
         
         switch highlight.viewType {
         case .viewUnion(let views):
-            borderLayer.path = enclosingPathForViews(views: views).cgPath
+            borderLayer.path = HighlightView.enclosingPathForViews(viewFrames: views.map { self.convert($0.frame, from: $0.superview) }).cgPath
         default:
             borderLayer.path = UIBezierPath(rect: lineBounds).cgPath
         }
     }
     
-    func enclosingPathForViews(views: [UIView]) -> UIBezierPath {
-        
-        let frames = views.map { self.convert($0.frame, from: $0.superview) }
+    static func enclosingPathForViews(viewFrames frames: [CGRect]) -> UIBezierPath {
         
         let path = UIBezierPath()
         
