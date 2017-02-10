@@ -54,9 +54,11 @@ public class VeneerDimmingView: UIView {
         path.append(UIBezierPath(rect: self.bounds))
         
         //calculate enclosing path for inverse mask views
-        let frames = inverseMaskViews.map { $0.frame }
-        let inverseMaskPath = HighlightView.enclosingPathForViews(viewFrames: frames)
-        path.append(inverseMaskPath)
+        if inverseMaskViews.isEmpty == false {
+            let frames = inverseMaskViews.map { $0.frame }
+            let inverseMaskPath = HighlightView.enclosingPathForViews(viewFrames: frames)
+            path.append(inverseMaskPath)
+        }
         
         return path.cgPath
     }

@@ -20,7 +20,7 @@ class StubbedVeneerDimmingView: VeneerDimmingView {
 class VeneerDimmingViewTests: XCTestCase {
     
     func testMaskIsAddedToLayer() {
-        let sut = VeneerDimmingView(inverseMaskView: nil)
+        let sut = VeneerDimmingView(inverseMaskViews: [])
         
         let mask = sut.layer.mask
         XCTAssertNotNil(mask)
@@ -31,15 +31,15 @@ class VeneerDimmingViewTests: XCTestCase {
     }
     
     func testSettingsInverseMaskViewCallsSetsNeedsLayout() {
-        let sut = StubbedVeneerDimmingView(inverseMaskView: nil)
+        let sut = StubbedVeneerDimmingView(inverseMaskViews: [])
         
         XCTAssertFalse(sut.setNeedsLayoutCalled)
-        sut.inverseMaskView = UIView()
+        sut.inverseMaskViews = [UIView()]
         XCTAssertTrue(sut.setNeedsLayoutCalled)
     }
     
     func testSettingsMaskInsetsCallsSetsNeedsLayout() {
-        let sut = StubbedVeneerDimmingView(inverseMaskView: nil)
+        let sut = StubbedVeneerDimmingView(inverseMaskViews: [])
         
         XCTAssertFalse(sut.setNeedsLayoutCalled)
         sut.maskInsets = .zero
@@ -48,7 +48,7 @@ class VeneerDimmingViewTests: XCTestCase {
     
     func testLayoutSetsCorrectMaskWhenMaskViewIsSet() {
         let maskView = UIView(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
-        let sut = VeneerDimmingView(inverseMaskView: maskView)
+        let sut = VeneerDimmingView(inverseMaskViews: [maskView])
         sut.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         
         sut.layoutSubviews()
@@ -56,15 +56,33 @@ class VeneerDimmingViewTests: XCTestCase {
         let shapeMask = sut.layer.mask as? CAShapeLayer
         XCTAssertNotNil(shapeMask?.path)
         
-        let expectedPath = CGMutablePath()
-        expectedPath.addRect(sut.bounds)
-        expectedPath.addRect(maskView.frame)
+        let expectedPath = UIBezierPath()
+        expectedPath.append(UIBezierPath(rect: sut.bounds))
+        expectedPath.append(HighlightView.enclosingPathForViews(viewFrames: [maskView.frame]))
         
-        XCTAssertEqual(shapeMask?.path, expectedPath)
+        XCTAssertEqual(shapeMask?.path, expectedPath.cgPath)
+    }
+    
+    func testLayoutSetsCorrectMaskWhenMultipleMaskViewsAreSet() {
+        let maskView1 = UIView(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
+        let maskView2 = UIView(frame: CGRect(x: 50, y: 60, width: 60, height: 60))
+        let sut = VeneerDimmingView(inverseMaskViews: [maskView1, maskView2])
+        sut.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        
+        sut.layoutSubviews()
+        
+        let shapeMask = sut.layer.mask as? CAShapeLayer
+        XCTAssertNotNil(shapeMask?.path)
+        
+        let expectedPath = UIBezierPath()
+        expectedPath.append(UIBezierPath(rect: sut.bounds))
+        expectedPath.append(HighlightView.enclosingPathForViews(viewFrames: [maskView1.frame, maskView2.frame]))
+        
+        XCTAssertEqual(shapeMask?.path, expectedPath.cgPath)
     }
     
     func testLayoutSetsCorrectMaskWhenNoMaskView() {
-        let sut = VeneerDimmingView(inverseMaskView: nil)
+        let sut = VeneerDimmingView(inverseMaskViews: [])
         sut.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         
         sut.layoutSubviews()
@@ -72,10 +90,10 @@ class VeneerDimmingViewTests: XCTestCase {
         let shapeMask = sut.layer.mask as? CAShapeLayer
         XCTAssertNotNil(shapeMask?.path)
         
-        let expectedPath = CGMutablePath()
-        expectedPath.addRect(sut.bounds)
+        let expectedPath = UIBezierPath()
+        expectedPath.append(UIBezierPath(rect: sut.bounds))
         
-        XCTAssertEqual(shapeMask?.path, expectedPath)
+        XCTAssertEqual(shapeMask?.path, expectedPath.cgPath)
     }
     
 }
