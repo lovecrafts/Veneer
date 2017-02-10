@@ -58,7 +58,7 @@ class VeneerDimmingViewTests: XCTestCase {
         
         let expectedPath = UIBezierPath()
         expectedPath.append(UIBezierPath(rect: sut.bounds))
-        expectedPath.append(HighlightView.enclosingPathForViews(viewFrames: [maskView.frame]))
+        expectedPath.append(UIBezierPath(outliningViewFrames: [maskView.frame]))
         
         XCTAssertEqual(shapeMask?.path, expectedPath.cgPath)
     }
@@ -76,7 +76,7 @@ class VeneerDimmingViewTests: XCTestCase {
         
         let expectedPath = UIBezierPath()
         expectedPath.append(UIBezierPath(rect: sut.bounds))
-        expectedPath.append(HighlightView.enclosingPathForViews(viewFrames: [maskView1.frame, maskView2.frame]))
+        expectedPath.append(UIBezierPath(outliningViewFrames: [maskView1.frame, maskView2.frame]))
         
         XCTAssertEqual(shapeMask?.path, expectedPath.cgPath)
     }
