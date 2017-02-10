@@ -22,7 +22,7 @@ public class VeneerDimmingView: UIView {
         return mask
     }()
     
-    var inverseMaskView: UIView? {
+    var inverseMaskViews: [UIView] = [] {
         didSet {
             self.setNeedsLayout()
         }
@@ -33,10 +33,10 @@ public class VeneerDimmingView: UIView {
         }
     }
     
-    required public init(inverseMaskView: UIView?, maskInsets: UIEdgeInsets = .zero) {
+    required public init(inverseMaskViews: [UIView], maskInsets: UIEdgeInsets = .zero) {
         super.init(frame: .zero)
         
-        self.inverseMaskView = inverseMaskView
+        self.inverseMaskViews = inverseMaskViews
         self.maskInsets = maskInsets
         
         self.layer.mask = maskLayer
@@ -49,14 +49,17 @@ public class VeneerDimmingView: UIView {
     }
     
     private var maskPath: CGPath {
-        let path = CGMutablePath()
+        let path = UIBezierPath()
         
-        path.addRect(self.bounds)
+        path.append(UIBezierPath(rect: self.bounds))
         
-        if let inverseMaskView = inverseMaskView {
-            path.addRect(inverseMaskView.frame.applying(insets: maskInsets))
+        //calculate enclosing path for inverse mask views
+        if inverseMaskViews.isEmpty == false {
+            let frames = inverseMaskViews.map { $0.frame }
+            let inverseMaskPath = UIBezierPath(outliningViewFrames: frames)
+            path.append(inverseMaskPath)
         }
         
-        return path
+        return path.cgPath
     }
 }

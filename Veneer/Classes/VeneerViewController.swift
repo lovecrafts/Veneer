@@ -32,19 +32,21 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     deinit {
         
         //remove observer for highlight view
-        highlight.view?.layer.removeObserver(self, forKeyPath: "bounds")
+        highlight.views.forEach { view in
+            view.layer.removeObserver(self, forKeyPath: "bounds")
+        }
     }
     
     let highlight: Highlight
-    let highlightView: HighlightView
+    let highlightViews: [HighlightView]
     let overlayView: T
     let dimmingView: VeneerDimmingView
     
     required init(highlight: Highlight, overlayView: T) {
-        self.highlightView = HighlightView(highlight: highlight)
+        self.highlightViews = highlight.views.map { _ in HighlightView(highlight: highlight) }
         self.highlight = highlight
         self.overlayView = overlayView
-        self.dimmingView = VeneerDimmingView(inverseMaskView: highlightView)
+        self.dimmingView = VeneerDimmingView(inverseMaskViews: highlightViews)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -56,7 +58,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         
         //add highlight and overlay views (highlight above)
         self.view.addSubview(overlayView)
-        self.view.addSubview(highlightView)
+        highlightViews.forEach(self.view.addSubview)
         
         //observe position
         observeHighlightPosition(highlight: highlight)
@@ -73,7 +75,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     }
     
     func observeHighlightPosition(highlight: Highlight) {
-        highlight.view?.layer.addObserver(self, forKeyPath: "bounds", options: [], context: nil)
+        highlight.views.forEach { view in
+            view.layer.addObserver(self, forKeyPath: "bounds", options: [], context: nil)
+        }
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -83,13 +87,22 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     }
     
     func updateHighlightViewFrame(completion: @escaping () -> () = { _ in }) {
-        guard let viewToHighlight = highlight.view else { return }
         
         //pushing onto next event loop since components like bar button item don't have their frames updated immediately
         DispatchQueue.main.async {
-            let convertedFrame = self.view.convert(viewToHighlight.frame, from: viewToHighlight.superview)
-            let insetFrame = convertedFrame.applying(insets: self.highlight.borderInsets)
-            self.highlightView.frame = insetFrame
+            let viewsToHighlight = self.highlight.views
+            
+            let convertedFrames = viewsToHighlight
+                .map { self.view.convert($0.frame, from: $0.superview) }
+                .map { $0.applying(insets: self.highlight.borderInsets) }
+            
+            zip(viewsToHighlight, self.highlightViews).forEach { view, highlightView in
+                
+                //update each highlight view with correspinging original view (including insets)
+                highlightView.frame = self.view
+                    .convert(view.frame, from: view.superview)
+                    .applying(insets: self.highlight.borderInsets)
+            }
             
             //update inverse mask in dimming view
             self.dimmingView.setNeedsLayout()
@@ -104,7 +117,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         //update on layout
         updateHighlightViewFrame {
             //update highlight view position for overlay view
-            self.overlayView.highlightViewFrame = self.highlightView.frame
+            self.overlayView.highlightViewFrame = self.highlightViews.reduce(CGRect.null) { combined, view in combined.union(view.frame) }
         }
         
         //update overlay view to match bounds

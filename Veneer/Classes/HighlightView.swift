@@ -22,7 +22,11 @@ public class HighlightView: UIView {
         return layer
     }()
     
+    private let highlight: Highlight
+    
     init(highlight: Highlight) {
+        self.highlight = highlight
+        
         super.init(frame: .zero)
         
         self.layer.addSublayer(borderLayer)
@@ -43,7 +47,11 @@ public class HighlightView: UIView {
                 
         borderLayer.frame = lineBounds
         
-        let path = UIBezierPath(rect: lineBounds)
-        borderLayer.path = path.cgPath
+        switch highlight.viewType {
+        case .viewUnion(let views):
+            borderLayer.path = UIBezierPath(outliningViewFrames: views.map { self.convert($0.frame, from: $0.superview) }).cgPath
+        default:
+            borderLayer.path = UIBezierPath(rect: lineBounds).cgPath
+        }
     }
 }

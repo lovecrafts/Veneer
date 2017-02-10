@@ -52,6 +52,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="BVe-fn-OYE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="SC8-iz-iKf">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -65,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="772.26386806596713"/>
         </scene>
-        <!--View Controller-->
+        <!--Bookmarks View Controller-->
         <scene sceneID="6k2-A9-ek0">
             <objects>
-                <viewController id="sRI-t7-ZqV" sceneMemberID="viewController">
+                <viewController id="sRI-t7-ZqV" customClass="BookmarksViewController" customModule="Veneer_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v2s-eC-EqI"/>
                         <viewControllerLayoutGuide type="bottom" id="pV5-UE-5af"/>
