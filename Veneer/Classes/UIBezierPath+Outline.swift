@@ -66,10 +66,8 @@ extension UIBezierPath {
             
             //guard against non outline points (e.g. corner points withing other rects)
             guard point.y == previousPoint.y
-                || point.y < previousPoint.y
-                && frames.contains(where: {$0.minX == point.x && $0.minY < previousPoint.y })
-                || point.y > previousPoint.y
-                && !frames.contains(where: { $0.maxX > point.x && $0.minY < point.y })
+                || (point.y < previousPoint.y && frames.contains(where: {$0.minX == point.x && $0.minY < previousPoint.y }))
+                || (point.y > previousPoint.y && !frames.contains(where: { $0.maxX > point.x && $0.minY < point.y }))
                 else  { continue }
             
             if point.y < previousPoint.y {
@@ -94,10 +92,8 @@ extension UIBezierPath {
             
             //guard against non outline points (e.g. corner points withing other rects)
             guard point.y == previousPoint.y
-                || point.y > previousPoint.y
-                && frames.contains(where: {$0.maxX == point.x && $0.maxY > previousPoint.y })
-                || point.y < previousPoint.y
-                && !frames.contains(where: { $0.minX < point.x && $0.maxY > point.y })
+                || (point.y > previousPoint.y && frames.contains(where: {$0.maxX == point.x && $0.maxY > previousPoint.y }))
+                || (point.y < previousPoint.y && !frames.contains(where: { $0.minX < point.x && $0.maxY > point.y }))
                 else  { continue }
             
             if point.y > previousPoint.y {
