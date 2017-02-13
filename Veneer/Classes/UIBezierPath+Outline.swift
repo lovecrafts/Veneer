@@ -8,6 +8,25 @@
 
 import UIKit
 
+extension CGRect {
+    
+    var topLeft: CGPoint {
+        return CGPoint(x: self.minX, y: self.minY)
+    }
+    
+    var topRight: CGPoint {
+        return CGPoint(x: self.maxX, y: self.minY)
+    }
+    
+    var bottomRight: CGPoint {
+        return CGPoint(x: self.maxX, y: self.maxY)
+    }
+    
+    var bottomLeft: CGPoint {
+        return CGPoint(x: self.minX, y: self.maxY)
+    }
+}
+
 extension UIBezierPath {
     
     //code adapted from http://stackoverflow.com/a/35711310/1138900
@@ -25,7 +44,7 @@ extension UIBezierPath {
         
         // top left and right corners of each view
         // sorted from left to right, top to bottom
-        var topPoints:[CGPoint] = frames.reduce([]) { $0 + [CGPoint(x: $1.minX, y: $1.minY), CGPoint(x: $1.maxX, y: $1.minY)] }
+        var topPoints:[CGPoint] = frames.reduce([]) { $0 + [$1.topLeft, $1.topRight] }
         topPoints = topPoints.sorted(by: { $0.x == $1.x ? $0.y < $1.y : $0.x < $1.x })
         
         // trace top line from left to right
@@ -54,7 +73,7 @@ extension UIBezierPath {
         
         // botom left and right corners of each view
         // sorted from right to left, bottom to top
-        var bottomPoints: [CGPoint] = frames.reduce([]) { $0 + [CGPoint(x: $1.minX, y: $1.maxY), CGPoint(x: $1.maxX, y: $1.maxY)] }
+        var bottomPoints: [CGPoint] = frames.reduce([]) { $0 + [$1.bottomLeft, $1.bottomRight] }
         bottomPoints = bottomPoints.sorted(by: { $0.x == $1.x ? $0.y > $1.y : $0.x > $1.x })
         
         // trace bottom line from right to left
