@@ -27,6 +27,17 @@ extension CGRect {
     }
 }
 
+extension Collection where Iterator.Element == CGRect {
+    
+    var topPoints: [CGPoint] {
+        return self.reduce([]) { $0 + [$1.topLeft, $1.topRight] }
+    }
+    
+    var bottomPoints: [CGPoint] {
+        return self.reduce([]) { $0 + [$1.bottomLeft, $1.bottomRight] }
+    }
+}
+
 extension UIBezierPath {
     
     //code adapted from http://stackoverflow.com/a/35711310/1138900
@@ -44,7 +55,7 @@ extension UIBezierPath {
         
         // top left and right corners of each view
         // sorted from left to right, top to bottom
-        var topPoints:[CGPoint] = frames.reduce([]) { $0 + [$1.topLeft, $1.topRight] }
+        var topPoints:[CGPoint] = frames.topPoints
         topPoints = topPoints.sorted(by: { $0.x == $1.x ? $0.y < $1.y : $0.x < $1.x })
         
         // trace top line from left to right
@@ -73,7 +84,7 @@ extension UIBezierPath {
         
         // botom left and right corners of each view
         // sorted from right to left, bottom to top
-        var bottomPoints: [CGPoint] = frames.reduce([]) { $0 + [$1.bottomLeft, $1.bottomRight] }
+        var bottomPoints: [CGPoint] = frames.bottomPoints
         bottomPoints = bottomPoints.sorted(by: { $0.x == $1.x ? $0.y > $1.y : $0.x > $1.x })
         
         // trace bottom line from right to left
