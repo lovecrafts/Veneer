@@ -11,32 +11,23 @@ Pod::Spec.new do |s|
   s.version          = '0.1.0'
   s.summary          = 'A short description of Veneer.'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+    A helper library for adding overlays on top of iOS screens. Used on the LoveKnitting app to show helper / walkthrough overlays.
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+
+    A helper library for adding overlays on top of iOS screens. Used on the LoveKnitting app to show helper / walkthrough overlays.
+
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/Veneer'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/lovecrafts/Veneer'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Sam Watts' => 'samuel.watts@gmail.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/Veneer.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'Sam Watts' => 'sam.watts@loveknitting.com' }
+  s.source           = { :git => 'https://github.com/lovecrafts/Veneer', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'Veneer/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'Veneer' => ['Veneer/Assets/*.png']
-  # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit'
+
 end
