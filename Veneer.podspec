@@ -9,9 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Veneer'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Veneer.'
-
-    A helper library for adding overlays on top of iOS screens. Used on the LoveKnitting app to show helper / walkthrough overlays.
+  s.summary          = 'Overlay helper library'
 
   s.description      = <<-DESC
 
