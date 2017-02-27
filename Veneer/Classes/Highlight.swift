@@ -24,13 +24,15 @@ public struct Highlight {
     let lineDashColor: UIColor
     let lineDashWidth: CGFloat
     let lineDashPattern: [Int]
+    let cornerRadius: CGFloat
     
     public init(
         viewType: ViewType,
         borderInsets: UIEdgeInsets = .zero,
         lineDashColor: UIColor = .black,
         lineDashPattern: [Int] = [5, 5],
-        lineDashWidth: CGFloat = 5
+        lineDashWidth: CGFloat = 5,
+        cornerRadius: CGFloat = 5
         ) {
         
         self.viewType = viewType
@@ -38,6 +40,7 @@ public struct Highlight {
         self.lineDashColor = lineDashColor
         self.lineDashPattern = lineDashPattern
         self.lineDashWidth = lineDashWidth
+        self.cornerRadius = cornerRadius
     }
 }
 
