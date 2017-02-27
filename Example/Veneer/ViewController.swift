@@ -143,7 +143,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         print("showing overlay highlighting cell at index path: \(indexPath)")
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        self.showVeneer(withHighlight: Highlight(viewType: .view(view: cell)), overlayViewType: ViewOverlayView.self)
+        self.showVeneer(withHighlight: Highlight(viewType: .view(view: cell), cornerRadius: 5), overlayViewType: ViewOverlayView.self)
     }
 }
 
