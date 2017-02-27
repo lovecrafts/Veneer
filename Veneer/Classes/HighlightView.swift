@@ -51,7 +51,7 @@ public class HighlightView: UIView {
         case .viewUnion(let views):
             borderLayer.path = UIBezierPath(outliningViewFrames: views.map { self.convert($0.frame, from: $0.superview) }).cgPath
         default:
-            borderLayer.path = UIBezierPath(rect: lineBounds).cgPath
+            borderLayer.path = UIBezierPath(roundedRect: lineBounds, cornerRadius: highlight.cornerRadius).cgPath
         }
     }
 }
