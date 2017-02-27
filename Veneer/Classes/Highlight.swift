@@ -24,7 +24,7 @@ public struct Highlight {
     let lineDashColor: UIColor
     let lineDashWidth: CGFloat
     let lineDashPattern: [Int]
-    let cornerRadius: CGFloat
+    let cornerRadius: CGFloat //Note: not supported on view union view types
     
     public init(
         viewType: ViewType,
@@ -32,7 +32,7 @@ public struct Highlight {
         lineDashColor: UIColor = .black,
         lineDashPattern: [Int] = [5, 5],
         lineDashWidth: CGFloat = 5,
-        cornerRadius: CGFloat = 5
+        cornerRadius: CGFloat = 0
         ) {
         
         self.viewType = viewType
