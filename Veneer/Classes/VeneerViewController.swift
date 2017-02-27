@@ -41,14 +41,12 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     let highlightViews: [HighlightView]
     let overlayView: T
     let dimmingView: VeneerDimmingView
-    let completion: ((DismissType) -> ())?
     
     required init(highlight: Highlight, overlayView: T) {
         self.highlightViews = highlight.views.map { _ in HighlightView(highlight: highlight) }
         self.highlight = highlight
         self.overlayView = overlayView
         self.dimmingView = VeneerDimmingView(inverseMaskViews: highlightViews)
-        self.completion = nil
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -84,8 +82,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         
         let dismissType: DismissType = hitHiglightView ? .tapOnHighlight : .tap
         
+        //intercept default compeltion and update dismiss type based on tap location
         self.dismissVeneer(animated: true) { [weak self] _ in
-            self?.completion?(dismissType)
+            self?.highlight.dismissCompletion?(dismissType)
         }
     }
     
