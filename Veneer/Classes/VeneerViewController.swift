@@ -80,7 +80,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
             hitHiglightView = false
         }
         
-        let dismissType: DismissType = hitHiglightView ? .tapOnHighlight : .tap
+        let dismissType: DismissType = hitHiglightView ? .tapOnHighlight : .tapToDismiss
         
         //intercept default compeltion and update dismiss type based on tap location
         self.dismissVeneer(animated: true) { [weak self] _ in

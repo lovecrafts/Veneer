@@ -10,8 +10,19 @@ import UIKit
 
 public enum DismissType {
     case programmatic
-    case tap
+    case tapToDismiss
     case tapOnHighlight
+}
+
+extension DismissType: CustomStringConvertible {
+    
+    public var description: String {
+        switch self {
+        case .programmatic: return "Dismissed programmatically"
+        case .tapToDismiss: return "Tapped on background / close button"
+        case .tapOnHighlight: return "Tapped on highlighted view(s)"
+        }
+    }
 }
 
 public extension UIViewController {
