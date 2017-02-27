@@ -34,7 +34,7 @@ class UIViewController_VeneerTests: XCTestCase {
         viewController.showVeneer(withHighlight: Highlight(viewType: .view(view: UIView())))
         
         let dismissComplete = expectation(description: "dismiss veneer complete")
-        viewController.dismissVeneer(animated: false) {
+        viewController.dismissVeneer(animated: false) { _ in 
             let keyWindowAfterDismiss = UIApplication.shared.keyWindow
             
             XCTAssertNotNil(keyWindowAfterDismiss)

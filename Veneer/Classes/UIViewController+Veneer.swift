@@ -8,6 +8,12 @@
 
 import UIKit
 
+public enum DismissType {
+    case programmatic
+    case tap
+    case tapOnHighlight
+}
+
 public extension UIViewController {
     
     public func showVeneer(withHighlight highlight: Highlight, overlayViewType: VeneerOverlayView.Type = VeneerOverlayView.self) {
@@ -35,7 +41,7 @@ public extension UIViewController {
         UIApplication.shared.veneerWindow = window
     }
     
-    public func dismissVeneer(animated: Bool = true, completion: (() -> ())? = nil) {
+    public func dismissVeneer(animated: Bool = true, completion: ((DismissType) -> ())? = nil) {
         guard let window = UIApplication.shared.veneerWindow else {
             print("Warning: attempting to dismiss non visible veneer")
             return
@@ -47,7 +53,7 @@ public extension UIViewController {
             //release veneer window to resign as key
             UIApplication.shared.veneerWindow = nil
 
-            completion?()
+            completion?(.programmatic)
         }
     }
 }
