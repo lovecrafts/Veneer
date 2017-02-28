@@ -78,7 +78,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.addSubview(collectionView)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .lightGray
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -143,7 +143,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         print("showing overlay highlighting cell at index path: \(indexPath)")
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        let highlight = Highlight(viewType: .view(view: cell), cornerRadius: 5) { [weak self] dismissType in
+        
+        let highlight = Highlight(viewType: .view(view: cell), cornerRadius: indexPath.item == 3 ? 6 : 0) { [weak self] dismissType in
             print("Dismissed with type: \(dismissType)")
             
             switch dismissType {
