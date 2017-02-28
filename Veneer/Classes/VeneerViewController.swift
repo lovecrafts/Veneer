@@ -66,12 +66,26 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         //set initial position
         updateHighlightViewFrame()
         
-        let dismissTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VeneerRootViewController.dismissCurrentVeneer))
+        let dismissTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VeneerRootViewController.dismissCurrentVeneer(recognizer:)))
         self.view.addGestureRecognizer(dismissTapGestureRecognizer)
     }
     
-    func dismissCurrentVeneer() {
-        self.dismissVeneer()
+    func dismissCurrentVeneer(recognizer: UITapGestureRecognizer) {
+        let locationInView = recognizer.location(in: self.view)
+        
+        let hitHiglightView: Bool
+        if let hitView = self.view.hitTest(locationInView, with: nil) as? HighlightView {
+            hitHiglightView = highlightViews.contains(hitView) //check if we hit one of the higlight views
+        } else {
+            hitHiglightView = false
+        }
+        
+        let dismissType: DismissType = hitHiglightView ? .tapOnHighlight : .tapToDismiss
+        
+        //intercept default compeltion and update dismiss type based on tap location
+        self.dismissVeneer(animated: true) { [weak self] _ in
+            self?.highlight.dismissCompletion?(dismissType)
+        }
     }
     
     func observeHighlightPosition(highlight: Highlight) {

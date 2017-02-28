@@ -31,7 +31,7 @@ class HighlightViewTests: XCTestCase {
         
         XCTAssertEqual(sut.borderLayer.frame, CGRect(x: 2.5, y: 2.5, width: 190, height: 190))
         XCTAssertNotNil(sut.borderLayer.path)
-        XCTAssertEqual(sut.borderLayer.path ?? UIBezierPath(rect: .zero).cgPath, UIBezierPath(rect: sut.borderLayer.frame).cgPath)
+        XCTAssertEqual(sut.borderLayer.path ?? UIBezierPath(rect: .zero).cgPath, UIBezierPath(roundedRect: sut.borderLayer.frame, cornerRadius: 0).cgPath)
     }
     
 }

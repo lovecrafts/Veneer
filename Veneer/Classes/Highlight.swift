@@ -26,13 +26,16 @@ public struct Highlight {
     let lineDashPattern: [Int]
     let cornerRadius: CGFloat //Note: not supported on view union view types
     
+    let dismissCompletion: ((DismissType) -> ())?
+    
     public init(
         viewType: ViewType,
         borderInsets: UIEdgeInsets = .zero,
         lineDashColor: UIColor = .black,
         lineDashPattern: [Int] = [5, 5],
         lineDashWidth: CGFloat = 5,
-        cornerRadius: CGFloat = 0
+        cornerRadius: CGFloat = 0,
+        dismissCompletion: ((DismissType) -> ())? = nil
         ) {
         
         self.viewType = viewType
@@ -41,6 +44,7 @@ public struct Highlight {
         self.lineDashPattern = lineDashPattern
         self.lineDashWidth = lineDashWidth
         self.cornerRadius = cornerRadius
+        self.dismissCompletion = dismissCompletion
     }
 }
 
