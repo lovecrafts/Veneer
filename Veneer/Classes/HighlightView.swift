@@ -39,6 +39,7 @@ public class HighlightView: UIView {
     override public func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
         guard layer == self.layer else { return }
+        guard layer.bounds != .zero else { return } //nothing to layout yet
         
         let halfLineWidth = borderLayer.lineWidth / 2
         let lineBounds = layer.bounds
