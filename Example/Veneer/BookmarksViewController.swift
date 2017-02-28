@@ -37,7 +37,7 @@ class BookmarksViewController: UIViewController {
     }
     
     func showCombinationOverlay() {
-        let highlight = Highlight(viewType: .viewUnion(views: [firstView, secondView]))
+        let highlight = Highlight(viewType: .viewUnion(views: [firstView, secondView])) { print("Dismissed with type: \($0)") }
         self.showVeneer(withHighlight: highlight)
     }
 
