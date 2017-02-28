@@ -133,7 +133,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridCollectionViewCell.gridReuseIdentifier, for: indexPath) as! GridCollectionViewCell
         
-        cell.backgroundColor = cellColors[indexPath.item]
+        if indexPath.item != 3 {
+            cell.backgroundColor = cellColors[indexPath.item]
+            cell.layer.cornerRadius = 0
+        } else {
+            cell.backgroundColor = .white
+            cell.layer.cornerRadius = 6
+        }
+        
         cell.label.text = "Tap to highlight"
         
         return cell
