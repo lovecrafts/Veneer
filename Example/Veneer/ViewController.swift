@@ -78,7 +78,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.addSubview(collectionView)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .lightGray
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -133,7 +133,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridCollectionViewCell.gridReuseIdentifier, for: indexPath) as! GridCollectionViewCell
         
-        cell.backgroundColor = cellColors[indexPath.item]
+        if indexPath.item != 3 {
+            cell.backgroundColor = cellColors[indexPath.item]
+            cell.layer.cornerRadius = 0
+        } else {
+            cell.backgroundColor = .white
+            cell.layer.cornerRadius = 6
+        }
+        
         cell.label.text = "Tap to highlight"
         
         return cell
@@ -143,7 +150,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         print("showing overlay highlighting cell at index path: \(indexPath)")
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        let highlight = Highlight(viewType: .view(view: cell), cornerRadius: 5) { [weak self] dismissType in
+        
+        let highlight = Highlight(viewType: .view(view: cell), cornerRadius: indexPath.item == 3 ? 6 : 0) { [weak self] dismissType in
             print("Dismissed with type: \(dismissType)")
             
             switch dismissType {

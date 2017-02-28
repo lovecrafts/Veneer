@@ -46,7 +46,11 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         self.highlightViews = highlight.views.map { _ in HighlightView(highlight: highlight) }
         self.highlight = highlight
         self.overlayView = overlayView
-        self.dimmingView = VeneerDimmingView(inverseMaskViews: highlightViews)
+        if highlightViews.count > 1 {
+            self.dimmingView = VeneerDimmingView(inverseMaskViews: highlightViews)
+        } else {
+            self.dimmingView = VeneerDimmingView(inverseMaskViews: highlightViews, maskCornerRadius: highlight.cornerRadius)
+        }
         
         super.init(nibName: nil, bundle: nil)
     }

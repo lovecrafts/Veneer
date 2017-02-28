@@ -33,11 +33,21 @@ public class VeneerDimmingView: UIView {
         }
     }
     
-    required public init(inverseMaskViews: [UIView], maskInsets: UIEdgeInsets = .zero) {
+    var maskCornerRadius: CGFloat = 0 {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
+    
+    required public init(inverseMaskViews: [UIView], maskInsets: UIEdgeInsets = .zero, maskCornerRadius: CGFloat = 0) {
         super.init(frame: .zero)
+        if maskCornerRadius != 0 && inverseMaskViews.count > 1 {
+            preconditionFailure("Corner radius is not supported on view union masking")
+        }
         
         self.inverseMaskViews = inverseMaskViews
         self.maskInsets = maskInsets
+        self.maskCornerRadius = maskCornerRadius
         
         self.layer.mask = maskLayer
     }
@@ -56,7 +66,14 @@ public class VeneerDimmingView: UIView {
         //calculate enclosing path for inverse mask views
         if inverseMaskViews.isEmpty == false {
             let frames = inverseMaskViews.map { $0.frame }
-            let inverseMaskPath = UIBezierPath(outliningViewFrames: frames)
+            
+            let inverseMaskPath: UIBezierPath
+            if frames.count > 1 {
+                inverseMaskPath = UIBezierPath(outliningViewFrames: frames)
+            } else {
+                inverseMaskPath = UIBezierPath(roundedRect: frames.first ?? .zero, cornerRadius: maskCornerRadius)
+            }
+
             path.append(inverseMaskPath)
         }
         
