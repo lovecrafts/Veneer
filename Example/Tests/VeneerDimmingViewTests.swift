@@ -58,7 +58,7 @@ class VeneerDimmingViewTests: XCTestCase {
         
         let expectedPath = UIBezierPath()
         expectedPath.append(UIBezierPath(rect: sut.bounds))
-        expectedPath.append(UIBezierPath(outliningViewFrames: [maskView.frame]))
+        expectedPath.append(UIBezierPath(roundedRect: maskView.frame, cornerRadius: 0))
         
         XCTAssertEqual(shapeMask?.path, expectedPath.cgPath)
     }
