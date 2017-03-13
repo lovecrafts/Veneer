@@ -12,6 +12,7 @@
 		22C7EBDF1E430FBD0027B6F6 /* UITabBar+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7EBDE1E430FBD0027B6F6 /* UITabBar+Helpers.swift */; };
 		22C9AB2F1E383783003E164F /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB2D1E38377E003E164F /* Highlight.swift */; };
 		22C9AB321E384E2A003E164F /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB301E384E26003E164F /* HighlightView.swift */; };
+		22D138261E76951900D9119A /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D138241E7694ED00D9119A /* ReusableView.swift */; };
 		22D68D4327B4958E50875737A0DEA49B /* VeneerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345A9E6CD080CF17133214721F9978C1 /* VeneerViewController.swift */; };
 		22F26B761E3EBEE200BE4122 /* VeneerOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F26B751E3EBEE200BE4122 /* VeneerOverlayView.swift */; };
 		22F26B781E3EC50000BE4122 /* VeneerDimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F26B771E3EC50000BE4122 /* VeneerDimmingView.swift */; };
@@ -47,6 +48,7 @@
 		22C7EBDE1E430FBD0027B6F6 /* UITabBar+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBar+Helpers.swift"; sourceTree = "<group>"; };
 		22C9AB2D1E38377E003E164F /* Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
 		22C9AB301E384E26003E164F /* HighlightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
+		22D138241E7694ED00D9119A /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		22F26B751E3EBEE200BE4122 /* VeneerOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeneerOverlayView.swift; sourceTree = "<group>"; };
 		22F26B771E3EC50000BE4122 /* VeneerDimmingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeneerDimmingView.swift; sourceTree = "<group>"; };
 		297E804C96D985C5942BF5DB7FAFDA64 /* Veneer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Veneer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +230,7 @@
 				22F26B771E3EC50000BE4122 /* VeneerDimmingView.swift */,
 				22C7EBDE1E430FBD0027B6F6 /* UITabBar+Helpers.swift */,
 				223C5B721E4DF6B4002345DD /* UIBezierPath+Outline.swift */,
+				22D138241E7694ED00D9119A /* ReusableView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				5EF1535D0A02D4BD84C4CA3897E877FF /* UIApplication+WindowStorage.swift in Sources */,
 				22F26B781E3EC50000BE4122 /* VeneerDimmingView.swift in Sources */,
 				D2FD00A0169B494AF4F15593E5660643 /* UIViewController+Veneer.swift in Sources */,
+				22D138261E76951900D9119A /* ReusableView.swift in Sources */,
 				223C5B741E4DF6F3002345DD /* UIBezierPath+Outline.swift in Sources */,
 				D28954AD0D0A4BC085928B14BD1BB30E /* Veneer-dummy.m in Sources */,
 				22A6E9F31E3AC2820040C573 /* CGRect+Insets.swift in Sources */,

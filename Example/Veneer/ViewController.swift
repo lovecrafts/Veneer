@@ -59,6 +59,10 @@ class GridCollectionViewFlowLayout: UICollectionViewFlowLayout {
         self.minimumInteritemSpacing = padding
         self.scrollDirection = .vertical
     }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
 }
 
 class ViewController: UIViewController {
