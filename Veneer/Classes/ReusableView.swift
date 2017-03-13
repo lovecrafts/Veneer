@@ -8,13 +8,32 @@
 
 import Foundation
 
-public enum ReuseType {
-    case cell
-    case supplementary
-}
-
 public protocol ReusableContainerView {
     
     var containerView: UIView { get }  //return instance of backing view, e.g. collection or table view
-    func reusableView(atIndexPath indexPath: IndexPath, ofType type: ReuseType) -> UIView? //instance of cell to be tracked
+    func reusableView(atIndexPath indexPath: IndexPath) -> UIView? //instance of cell to be tracked
+}
+
+//MARK: Default implementations
+
+extension UITableView: ReusableContainerView {
+    
+    public var containerView: UIView {
+        return self
+    }
+    
+    public func reusableView(atIndexPath indexPath: IndexPath) -> UIView? {
+        return self.cellForRow(at: indexPath)
+    }
+}
+
+extension UICollectionView: ReusableContainerView {
+    
+    public var containerView: UIView {
+        return self
+    }
+    
+    public func reusableView(atIndexPath indexPath: IndexPath) -> UIView? {
+        return self.cellForItem(at: indexPath)
+    }
 }
