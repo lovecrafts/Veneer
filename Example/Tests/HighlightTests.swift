@@ -9,6 +9,34 @@
 import XCTest
 @testable import Veneer
 
+private class StubbedCollectionView: UICollectionView {
+    
+    var stubbedCell = UICollectionViewCell()
+    var expectedIndexPath = IndexPath(item: 0, section: 0)
+    
+    override func cellForItem(at indexPath: IndexPath) -> UICollectionViewCell? {
+        if indexPath == expectedIndexPath {
+            return stubbedCell
+        } else {
+            return nil
+        }
+    }
+}
+
+private class StubbedTableView: UITableView {
+    
+    var stubbedCell = UITableViewCell()
+    var expectedIndexPath = IndexPath(row: 0, section: 0)
+    
+    override func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
+        if indexPath == expectedIndexPath {
+            return stubbedCell
+        } else {
+            return nil
+        }
+    }
+}
+
 class HighlightTests: XCTestCase {
     
     func testDefaultValues() {
@@ -26,6 +54,38 @@ class HighlightTests: XCTestCase {
         
         XCTAssertEqual(sut.views.count, 1)
         XCTAssertEqual(sut.views.first, view)
+    }
+    
+    func testFetchingViewForCollectionViewReturnsTheCorrectCollectionViewCell() {
+
+        let view = StubbedCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let sut = Highlight(viewType: .reusableView(reusableView: view, indexPath: IndexPath(item: 0, section: 0)))
+        
+        XCTAssertEqual(sut.views.count, 1)
+        XCTAssertEqual(sut.views.first, view.stubbedCell)
+    }
+    
+    func testFetchingViewForCollectionViewReturnsNoViewsWhenIndexPathIsInvalid() {
+        
+        let view = StubbedCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let sut = Highlight(viewType: .reusableView(reusableView: view, indexPath: IndexPath(item: 100, section: 10)))
+        
+        XCTAssertTrue(sut.views.isEmpty)
+    }
+    
+    func testFetchingViewForTableViewReturnsTheCorrectCell() {
+        let view = StubbedTableView(frame: .zero, style: .plain)
+        let sut = Highlight(viewType: .reusableView(reusableView: view, indexPath: IndexPath(item: 0, section: 0)))
+            
+        XCTAssertEqual(sut.views.count, 1)
+        XCTAssertEqual(sut.views.first, view.stubbedCell)
+    }
+    
+    func testFetchingViewForTableViewReturnsNoViewsWhenIndexPathIsInvalid() {
+        let view = StubbedTableView(frame: .zero, style: .plain)
+        let sut = Highlight(viewType: .reusableView(reusableView: view, indexPath: IndexPath(item: 120, section: 50)))
+        
+        XCTAssertTrue(sut.views.isEmpty)
     }
     
     func testFetchingViewsForUnionReturnsAllViews() {

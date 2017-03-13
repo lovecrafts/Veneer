@@ -46,4 +46,40 @@ class UIViewController_VeneerTests: XCTestCase {
         waitForExpectations(timeout: 1) { XCTAssertNil($0) }
     }
     
+    func testDismissingVeneerWithoutAlreadyPresentingDoesNothing() {
+        
+        let viewController = UIViewController()
+        
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        viewController.dismissVeneer(animated: false) { _ in
+            dispatchGroup.leave()
+        }
+        
+        let result = dispatchGroup.wait(timeout: .now() + 1)
+        switch result {
+        case .success:
+            XCTFail("Dismiss should never have been called")
+        case .timedOut:
+            break
+        }
+    }
+    
+    func testDismissTypeDescriptions() {
+        let types: [DismissType] = [
+            .programmatic,
+            .tapToDismiss,
+            .tapOnHighlight
+        ]
+        
+        let expectedDescriptions = [
+            "Dismissed programmatically",
+            "Tapped on background / close button",
+            "Tapped on highlighted view(s)"
+        ]
+        
+        XCTAssertEqual(types.map { $0.description }, expectedDescriptions)
+    }
+    
 }

@@ -12,6 +12,8 @@ import XCTest
 class HighlightViewTests: XCTestCase {
     
     let testHighlight = Highlight(viewType: .view(view: UIView()), borderInsets: UIEdgeInsets(top: 1, left: 2, bottom: 3, right: 4), lineDashColor: .green, lineDashPattern: [1, 2, 3, 4], lineDashWidth: 10)
+    let testViewUnionHighlight = Highlight(viewType: .viewUnion(views: [UIView()]), borderInsets: UIEdgeInsets(top: 1, left: 2, bottom: 3, right: 4), lineDashColor: .green, lineDashPattern: [1, 2, 3, 4], lineDashWidth: 10)
+
     
     func testBorderLayerIsInitialisedCorrectly() {
         let sut = HighlightView(highlight: testHighlight)
@@ -32,6 +34,36 @@ class HighlightViewTests: XCTestCase {
         XCTAssertEqual(sut.borderLayer.frame, CGRect(x: 2.5, y: 2.5, width: 190, height: 190))
         XCTAssertNotNil(sut.borderLayer.path)
         XCTAssertEqual(sut.borderLayer.path ?? UIBezierPath(rect: .zero).cgPath, UIBezierPath(roundedRect: sut.borderLayer.frame, cornerRadius: 0).cgPath)
+    }
+    
+    func testBorderLayerMaskIsSetupCorrectlyOnLayoutForViewUnion() {
+        let sut = HighlightView(highlight: testViewUnionHighlight)
+        sut.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        
+        sut.layoutSublayers(of: sut.layer)
+        
+        XCTAssertEqual(sut.borderLayer.frame, CGRect(x: 2.5, y: 2.5, width: 190, height: 190))
+        XCTAssertNotNil(sut.borderLayer.path)
+        XCTAssertEqual(sut.borderLayer.path ?? UIBezierPath(rect: .zero).cgPath, UIBezierPath(outliningViewFrames: testViewUnionHighlight.views.map { sut.convert($0.frame, from: $0.superview) }).cgPath)
+    }
+    
+    func testBorderLayerMaskIsNotSetupWhenSublayerIsNotViewsLayer() {
+        let sut = HighlightView(highlight: testHighlight)
+        sut.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        
+        sut.layoutSublayers(of: CALayer())
+        
+        XCTAssertNil(sut.borderLayer.path)
+    }
+    
+    func testBorderLayerMaskIsNotSetupWhenSublayerBoundsIsZero() {
+        let sut = HighlightView(highlight: testHighlight)
+        sut.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        
+        sut.layer.bounds = .zero
+        sut.layoutSublayers(of: sut.layer)
+        
+        XCTAssertNil(sut.borderLayer.path)
     }
     
 }
