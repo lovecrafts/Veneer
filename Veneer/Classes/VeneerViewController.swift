@@ -34,7 +34,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         
         //remove observer for highlight view
         observedHighlightViews.forEach { view in
-            view.layer.removeObserver(self, forKeyPath: "bounds")
+            view.layer.removeObserver(self, forKeyPath: #keyPath(UIView.bounds))
         }
     }
     
@@ -97,9 +97,9 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         highlight.views
             .filter { self.observedHighlightViews.contains($0) == false }
             .forEach { view in
-
+                
                 //add observer
-                view.layer.addObserver(self, forKeyPath: "bounds", options: [], context: nil)
+                view.layer.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: [], context: nil)
                 
                 //and track which views are currently being observed
                 self.observedHighlightViews.append(view)
