@@ -29,11 +29,12 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     @available(*, unavailable, message: "init(nibName:bundle:) is unavailable, use init(highlight:) instead")
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) { fatalError() }
     
+    var observedHighlightViews: [UIView] = []
     deinit {
         
         //remove observer for highlight view
-        highlight.views.forEach { view in
-            view.layer.removeObserver(self, forKeyPath: "bounds")
+        observedHighlightViews.forEach { view in
+            view.layer.removeObserver(self, forKeyPath: #keyPath(UIView.bounds))
         }
     }
     
@@ -93,9 +94,16 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     }
     
     func observeHighlightPosition(highlight: Highlight) {
-        highlight.views.forEach { view in
-            view.layer.addObserver(self, forKeyPath: "bounds", options: [], context: nil)
-        }
+        highlight.views
+            .filter { self.observedHighlightViews.contains($0) == false }
+            .forEach { view in
+                
+                //add observer
+                view.layer.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: [], context: nil)
+                
+                //and track which views are currently being observed
+                self.observedHighlightViews.append(view)
+            }
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -109,6 +117,11 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         //pushing onto next event loop since components like bar button item don't have their frames updated immediately
         DispatchQueue.main.async {
             let viewsToHighlight = self.highlight.views
+            
+            //if we are tracking reusable views we should check if the view instance has changed and update observers accordingly (or deinit could remove an observer that doesn't exist)
+            if case .reusableView = self.highlight.viewType {
+                self.observeHighlightPosition(highlight: self.highlight)
+            }
             
             let convertedFrames = viewsToHighlight
                 .map { self.view.convert($0.frame, from: $0.superview) }

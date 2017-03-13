@@ -13,6 +13,7 @@ public struct Highlight {
     public enum ViewType {
         
         case view(view: UIView)
+        case reusableView(reusableView: ReusableContainerView, indexPath: IndexPath)
         case viewUnion(views: [UIView])
         case barButtonItem(barButtonItem: UIBarButtonItem)
         case tabBarItem(tabBar: UITabBar, tabBarItem: UITabBarItem)
@@ -54,6 +55,9 @@ public extension Highlight {
         switch self.viewType {
         case .view(let view):
             return [view]
+        case .reusableView(let reusableContainerView, let indexPath):
+            return [reusableContainerView.reusableView(atIndexPath: indexPath)]
+                .flatMap { $0 } //remove missing views
         case .viewUnion(let views):
             return views
         case .barButtonItem(let barButtonItem):

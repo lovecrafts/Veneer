@@ -59,6 +59,10 @@ class GridCollectionViewFlowLayout: UICollectionViewFlowLayout {
         self.minimumInteritemSpacing = padding
         self.scrollDirection = .vertical
     }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
 }
 
 class ViewController: UIViewController {
@@ -148,10 +152,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("showing overlay highlighting cell at index path: \(indexPath)")
+                
+        let viewType = Highlight.ViewType.reusableView(reusableView: collectionView, indexPath: indexPath)
         
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        
-        let highlight = Highlight(viewType: .view(view: cell), cornerRadius: indexPath.item == 3 ? 6 : 0) { [weak self] dismissType in
+        let highlight = Highlight(viewType: viewType, cornerRadius: indexPath.item == 3 ? 6 : 0) { [weak self] dismissType in
             print("Dismissed with type: \(dismissType)")
             
             switch dismissType {
