@@ -31,7 +31,7 @@ class HighlightViewTests: XCTestCase {
         
         sut.layoutSublayers(of: sut.layer)
         
-        XCTAssertEqual(sut.borderLayer.frame, CGRect(x: 2.5, y: 2.5, width: 190, height: 190))
+        XCTAssertEqual(sut.borderLayer.frame, sut.frame)
         XCTAssertNotNil(sut.borderLayer.path)
         XCTAssertEqual(sut.borderLayer.path ?? UIBezierPath(rect: .zero).cgPath, UIBezierPath(roundedRect: sut.borderLayer.frame, cornerRadius: 0).cgPath)
     }
@@ -42,7 +42,7 @@ class HighlightViewTests: XCTestCase {
         
         sut.layoutSublayers(of: sut.layer)
         
-        XCTAssertEqual(sut.borderLayer.frame, CGRect(x: 2.5, y: 2.5, width: 190, height: 190))
+        XCTAssertEqual(sut.borderLayer.frame, sut.frame)
         XCTAssertNotNil(sut.borderLayer.path)
         XCTAssertEqual(sut.borderLayer.path ?? UIBezierPath(rect: .zero).cgPath, UIBezierPath(outliningViewFrames: testViewUnionHighlight.views.map { sut.convert($0.frame, from: $0.superview) }).cgPath)
     }
