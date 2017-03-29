@@ -45,6 +45,13 @@ public class VeneerDimmingView: UIView {
             preconditionFailure("Corner radius is not supported on view union masking")
         }
         
+        //check if we have an appearance value configured before setting default background
+        if let appearanceBackgroundColor = VeneerDimmingView.appearance().backgroundColor {
+            self.backgroundColor = appearanceBackgroundColor
+        } else {
+            self.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        }
+        
         self.inverseMaskViews = inverseMaskViews
         self.maskInsets = maskInsets
         self.maskCornerRadius = maskCornerRadius

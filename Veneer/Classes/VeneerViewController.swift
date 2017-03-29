@@ -13,16 +13,6 @@ public class VeneerViewController: UIViewController { }
 
 class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     
-
-    override class func initialize() {
-
-        //if we are being loaded after the application appearance values have been set, skip this step
-        if VeneerDimmingView.appearance().backgroundColor == nil {
-            //set default appearance values, can be overriden (see example app delegate)
-            VeneerDimmingView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        }
-    }
-    
     @available(*, unavailable, message: "init(coder:) is unavailable, use init(highlight:) instead")
     required init?(coder aDecoder: NSCoder) { fatalError() }
     
@@ -108,7 +98,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        guard let observedLayer = object as? CALayer else { return }
+        guard let _ = object as? CALayer else { return }
         updateHighlightViewFrame()
     }
     
@@ -122,10 +112,6 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
             if case .reusableView = self.highlight.viewType {
                 self.observeHighlightPosition(highlight: self.highlight)
             }
-            
-            let convertedFrames = viewsToHighlight
-                .map { self.view.convert($0.frame, from: $0.superview) }
-                .map { $0.applying(insets: self.highlight.borderInsets) }
             
             zip(viewsToHighlight, self.highlightViews).forEach { view, highlightView in
                 
