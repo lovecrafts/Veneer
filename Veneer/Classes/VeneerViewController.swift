@@ -13,16 +13,6 @@ public class VeneerViewController: UIViewController { }
 
 class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
     
-
-    override class func initialize() {
-
-        //if we are being loaded after the application appearance values have been set, skip this step
-        if VeneerDimmingView.appearance().backgroundColor == nil {
-            //set default appearance values, can be overriden (see example app delegate)
-            VeneerDimmingView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        }
-    }
-    
     @available(*, unavailable, message: "init(coder:) is unavailable, use init(highlight:) instead")
     required init?(coder aDecoder: NSCoder) { fatalError() }
     
