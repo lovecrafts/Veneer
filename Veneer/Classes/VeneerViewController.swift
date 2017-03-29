@@ -108,7 +108,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        guard let observedLayer = object as? CALayer else { return }
+        guard let _ = object as? CALayer else { return }
         updateHighlightViewFrame()
     }
     
@@ -122,10 +122,6 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
             if case .reusableView = self.highlight.viewType {
                 self.observeHighlightPosition(highlight: self.highlight)
             }
-            
-            let convertedFrames = viewsToHighlight
-                .map { self.view.convert($0.frame, from: $0.superview) }
-                .map { $0.applying(insets: self.highlight.borderInsets) }
             
             zip(viewsToHighlight, self.highlightViews).forEach { view, highlightView in
                 
