@@ -27,7 +27,7 @@ extension DismissType: CustomStringConvertible {
 
 public extension UIViewController {
     
-    public func showVeneer(withHighlight highlight: Highlight, overlayViewType: VeneerOverlayView.Type = VeneerOverlayView.self) {
+    public func showVeneer(withHighlight highlight: Highlight, overlayViewType: VeneerOverlayView.Type = VeneerOverlayView.self, configurationCallback: ((VeneerOverlayView) -> ())? = nil) {
         guard UIApplication.shared.veneerWindow == nil else {
             print("Error: unable to show veneer when one has already been shown")
             return
@@ -37,7 +37,8 @@ public extension UIViewController {
         
         window.windowLevel = UIWindowLevelStatusBar + 1
         
-        window.rootViewController = VeneerRootViewController(highlight: highlight, overlayView: overlayViewType.init())
+        let viewController = VeneerRootViewController(highlight: highlight, overlayView: overlayViewType.init())
+        window.rootViewController = viewController
         
         window.rootViewController?.view.alpha = 0
         
@@ -50,6 +51,8 @@ public extension UIViewController {
         
         //store window to prevent it being removed on deinit
         UIApplication.shared.veneerWindow = window
+        
+        configurationCallback?(viewController.overlayView)
     }
     
     public func dismissVeneer(animated: Bool = true, completion: ((DismissType) -> ())? = nil) {
