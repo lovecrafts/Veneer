@@ -27,7 +27,11 @@ extension DismissType: CustomStringConvertible {
 
 public extension UIViewController {
     
-    public func showVeneer(withHighlight highlight: Highlight, overlayViewType: VeneerOverlayView.Type = VeneerOverlayView.self, configurationCallback: ((VeneerOverlayView) -> ())? = nil) {
+    public func showVeneer(withHighlight highlight: Highlight, configurationCallback: ((VeneerOverlayView) -> ())? = nil) {
+        showVeneer(withHighlight: highlight, overlayViewType: VeneerOverlayView.self, configurationCallback: configurationCallback)
+    }
+    
+    public func showVeneer<OV: VeneerOverlayView>(withHighlight highlight: Highlight, overlayViewType: OV.Type, configurationCallback: ((OV) -> ())? = nil) {
         guard UIApplication.shared.veneerWindow == nil else {
             print("Error: unable to show veneer when one has already been shown")
             return
