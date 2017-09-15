@@ -17,6 +17,7 @@ public struct Highlight {
         case viewUnion(views: [UIView])
         case barButtonItem(barButtonItem: UIBarButtonItem)
         case tabBarItem(tabBar: UITabBar, tabBarItem: UITabBarItem)
+        case none
     }
     
     let viewType: ViewType
@@ -64,6 +65,8 @@ public extension Highlight {
             return [barButtonItem.customView].flatMap { $0 }
         case .tabBarItem(let tabBar, let tabBarItem):
             return [tabBar.view(forItem: tabBarItem)].flatMap { $0 }
+        case .none:
+            return []
         }
     }
 }
