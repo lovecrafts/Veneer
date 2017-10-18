@@ -65,7 +65,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         self.view.addGestureRecognizer(dismissTapGestureRecognizer)
     }
     
-    func dismissCurrentVeneer(recognizer: UITapGestureRecognizer) {
+    @objc func dismissCurrentVeneer(recognizer: UITapGestureRecognizer) {
         let locationInView = recognizer.location(in: self.view)
         
         let hitHiglightView: Bool
@@ -102,7 +102,7 @@ class VeneerRootViewController<T: VeneerOverlayView>: VeneerViewController {
         updateHighlightViewFrame()
     }
     
-    func updateHighlightViewFrame(completion: @escaping () -> () = { _ in }) {
+    func updateHighlightViewFrame(completion: @escaping () -> () = {  }) {
         
         //pushing onto next event loop since components like bar button item don't have their frames updated immediately
         DispatchQueue.main.async {

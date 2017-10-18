@@ -99,7 +99,7 @@ class ViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customViewWithTitle: "Tab bar", target: self, action: #selector(ViewController.showOverlayFromTabBarItem))
     }
     
-    func showOverlayFromBarButtonItem() {
+    @objc func showOverlayFromBarButtonItem() {
         guard let barButtonItem = self.navigationItem.rightBarButtonItem else { return }
         print("show overlay from bar button item: \(barButtonItem)")
         
@@ -114,7 +114,7 @@ class ViewController: UIViewController {
         self.showVeneer(withHighlight: highlight, overlayViewType: BarButtonItemOverlayView.self)
     }
     
-    func showOverlayFromTabBarItem() {
+    @objc func showOverlayFromTabBarItem() {
         guard let tabBar = self.tabBarController?.tabBar else { return }
         guard let tabBarItem = self.navigationController?.tabBarItem else { return }
         
