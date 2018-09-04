@@ -39,7 +39,7 @@ public extension UIViewController {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         
-        window.windowLevel = UIWindowLevelStatusBar + 1
+        window.windowLevel = UIWindow.Level.statusBar + 1
         
         let viewController = VeneerRootViewController(highlight: highlight, overlayView: overlayViewType.init())
         window.rootViewController = viewController

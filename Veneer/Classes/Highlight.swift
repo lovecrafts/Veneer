@@ -58,13 +58,13 @@ public extension Highlight {
             return [view]
         case .reusableView(let reusableContainerView, let indexPath):
             return [reusableContainerView.reusableView(atIndexPath: indexPath)]
-                .flatMap { $0 } //remove missing views
+                .compactMap { $0 } //remove missing views
         case .viewUnion(let views):
             return views
         case .barButtonItem(let barButtonItem):
-            return [barButtonItem.customView].flatMap { $0 }
+            return [barButtonItem.customView].compactMap { $0 }
         case .tabBarItem(let tabBar, let tabBarItem):
-            return [tabBar.view(forItem: tabBarItem)].flatMap { $0 }
+            return [tabBar.view(forItem: tabBarItem)].compactMap { $0 }
         case .none:
             return []
         }

@@ -18,7 +18,7 @@ extension UITabBar {
         
         //get a list of potential subviews (sorted horizontally so we can use the tab bar item order)
         let potentialSubviews = self.subviews
-            .flatMap { $0 as? UIControl } //check for control to ignore background, visual effect etc
+            .compactMap { $0 as? UIControl } //check for control to ignore background, visual effect etc
             .sorted { lhs, rhs in lhs.frame.minX < rhs.frame.minX }
         
         //something strange going on with UIKit layout if the matching subviews don't match the number of tab bar items
