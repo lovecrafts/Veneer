@@ -45,8 +45,8 @@ class UITabBar_HelpersTests: XCTestCase {
         let view = sut.view(forItem: barItem)
         XCTAssertNotNil(view)
         
-        let orderedControls: [UIView] = sut.subviews.flatMap { $0 as? UIControl }.sorted { lhs, rhs in lhs.frame.minX < rhs.frame.minX }
-        let indexOfViewInControl = orderedControls.index(of: view!)
+        let orderedControls: [UIView] = sut.subviews.compactMap { $0 as? UIControl }.sorted { lhs, rhs in lhs.frame.minX < rhs.frame.minX }
+        let indexOfViewInControl = orderedControls.firstIndex(of: view!)
         XCTAssertNotNil(indexOfViewInControl)
         XCTAssertEqual(indexOfViewInControl, 1)
     }

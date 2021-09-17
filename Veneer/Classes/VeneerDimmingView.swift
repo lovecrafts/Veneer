@@ -18,7 +18,7 @@ public class VeneerDimmingView: UIView {
     
     private let maskLayer: CAShapeLayer = {
         let mask = CAShapeLayer()
-        mask.fillRule = kCAFillRuleEvenOdd
+        mask.fillRule = CAShapeLayerFillRule.evenOdd
         return mask
     }()
     

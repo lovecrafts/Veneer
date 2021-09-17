@@ -27,11 +27,11 @@ extension DismissType: CustomStringConvertible {
 
 public extension UIViewController {
     
-    public func showVeneer(withHighlight highlight: Highlight, configurationCallback: ((VeneerOverlayView) -> ())? = nil) {
+    func showVeneer(withHighlight highlight: Highlight, configurationCallback: ((VeneerOverlayView) -> ())? = nil) {
         showVeneer(withHighlight: highlight, overlayViewType: VeneerOverlayView.self, configurationCallback: configurationCallback)
     }
     
-    public func showVeneer<OV: VeneerOverlayView>(withHighlight highlight: Highlight, overlayViewType: OV.Type, configurationCallback: ((OV) -> ())? = nil) {
+    func showVeneer<OV: VeneerOverlayView>(withHighlight highlight: Highlight, overlayViewType: OV.Type, configurationCallback: ((OV) -> ())? = nil) {
         guard UIApplication.shared.veneerWindow == nil else {
             print("Error: unable to show veneer when one has already been shown")
             return
@@ -39,7 +39,7 @@ public extension UIViewController {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         
-        window.windowLevel = UIWindowLevelStatusBar + 1
+        window.windowLevel = UIWindow.Level.statusBar + 1
         
         let viewController = VeneerRootViewController(highlight: highlight, overlayView: overlayViewType.init())
         window.rootViewController = viewController
@@ -59,7 +59,7 @@ public extension UIViewController {
         configurationCallback?(viewController.overlayView)
     }
     
-    public func dismissVeneer(animated: Bool = true, completion: ((DismissType) -> ())? = nil) {
+    func dismissVeneer(animated: Bool = true, completion: ((DismissType) -> ())? = nil) {
         guard let window = UIApplication.shared.veneerWindow else {
             print("Warning: attempting to dismiss non visible veneer")
             return

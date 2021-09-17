@@ -27,7 +27,7 @@ class VeneerDimmingViewTests: XCTestCase {
         
         let shapeMask = mask as? CAShapeLayer
         XCTAssertNotNil(shapeMask)
-        XCTAssertEqual(shapeMask?.fillRule, kCAFillRuleEvenOdd)
+        XCTAssertEqual(shapeMask?.fillRule, .evenOdd)
     }
     
     func testSettingsInverseMaskViewCallsSetsNeedsLayout() {
